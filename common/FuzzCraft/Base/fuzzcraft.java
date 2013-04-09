@@ -1,9 +1,8 @@
 package FuzzCraft.Base;
 
-import java.util.logging.Level;
 
-import net.minecraftforge.common.Configuration;
-import cpw.mods.fml.common.FMLLog;
+import java.io.File;
+
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.Init;
 import cpw.mods.fml.common.Mod.Instance;
@@ -29,17 +28,12 @@ public class fuzzcraft {
         
         @PreInit
         public void preInit(FMLPreInitializationEvent event) {
+           
+            ConfigHandler.init(new File(event.getModConfigurationDirectory(),
+                    "/fuzzcraft/fuzzcraft.cfg"));
+
             
-            Configuration config = new Configuration(event.getSuggestedConfigurationFile());
-            
-            try {
-                config.load();
-            } catch (Exception e) {
-                FMLLog.log(Level.SEVERE, e, "Error Loading FuzzCraft Configuration!");               
-            } finally {
-                FMLLog.log(Level.INFO, "FuzzCraft Configuration Loaded Successfully!");                
-                config.save();
-            }   
+                        
         }
        
         @Init
