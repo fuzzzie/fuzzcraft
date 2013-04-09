@@ -14,6 +14,7 @@ import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkMod;
+import FuzzCraft.Handlers.*;
 
 @Mod(modid="modinfo.MOD_ID", name="modinfo.MOD_NAME", version="modinfo.MOD_VERSION", dependencies="modinfo.DEPENDENCIES")
 @NetworkMod(clientSideRequired=true, serverSideRequired=false)
@@ -25,7 +26,7 @@ public class fuzzcraft {
        
         @SidedProxy(clientSide=modinfo.CLIENT_PROXY, serverSide=modinfo.SERVER_PROXY)
         public static CommonProxy proxy;
-       
+        
         @PreInit
         public void preInit(FMLPreInitializationEvent event) {
             
@@ -38,14 +39,15 @@ public class fuzzcraft {
             } finally {
                 FMLLog.log(Level.INFO, "FuzzCraft Configuration Loaded Successfully!");                
                 config.save();
-            }
-            
+            }   
         }
        
         @Init
         public void load(FMLInitializationEvent event) {
                 
-            
+            BlockHandler.registerBlocks();
+            ItemHandler.registerItems();
+            RecipeHandler.registerRecipes();
             proxy.registerRenderers();
         }
        
@@ -53,4 +55,5 @@ public class fuzzcraft {
         public void postInit(FMLPostInitializationEvent event) {
                
         }
+
 }
