@@ -18,8 +18,10 @@ import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkMod;
+import cpw.mods.fml.common.registry.GameRegistry;
+import cpw.mods.fml.common.registry.LanguageRegistry;
 import FuzzCraft.Blocks.EnderFlower;
-import FuzzCraft.Handlers.*;
+
 
 @Mod(modid="modinfo.MOD_ID", name="modinfo.MOD_NAME", version="modinfo.MOD_VERSION", dependencies="modinfo.DEPENDENCIES")
 @NetworkMod(clientSideRequired=true, serverSideRequired=false)
@@ -45,14 +47,18 @@ public class fuzzcraft {
        
         @Init
         public void load(FMLInitializationEvent event) {
-            
+            proxy.registerRenderers();
+         
+            // Init blocks
             EnderFlower enderFlower = new EnderFlower(blockIdFlower.getInt());
             
-            BlockHandler.registerBlocks();
-            ItemHandler.registerItems();
-            RecipeHandler.registerRecipes();
-            WorldgenHandler.registerWorldgen();
-            proxy.registerRenderers();
+            // Register Blocks
+            
+            LanguageRegistry.addName(enderFlower, "Ender Flower");
+            MinecraftForge.setBlockHarvestLevel(enderFlower, "Shovel", 0);
+            GameRegistry.registerBlock(enderFlower, "enderFlower");
+            
+            
         }
             
             
