@@ -1,13 +1,10 @@
 package FuzzCraft.Base;
 
-
-import java.util.logging.Level;
-
 import net.minecraftforge.common.Configuration;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.Property;
 
-import cpw.mods.fml.common.FMLLog;
+
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.Init;
 import cpw.mods.fml.common.Mod.Instance;
@@ -23,7 +20,7 @@ import cpw.mods.fml.common.registry.LanguageRegistry;
 import FuzzCraft.Blocks.EnderFlower;
 
 
-@Mod(modid="modinfo.MOD_ID", name="modinfo.MOD_NAME", version="modinfo.MOD_VERSION", dependencies="modinfo.DEPENDENCIES")
+@Mod(modid="modinfo.MOD_ID", name="modinfo.MOD_NAME", version="modinfo.MOD_VERSION")
 @NetworkMod(clientSideRequired=true, serverSideRequired=false)
 
 public class fuzzcraft {
