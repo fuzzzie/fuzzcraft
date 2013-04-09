@@ -48,6 +48,7 @@ public class fuzzcraft {
             BlockHandler.registerBlocks();
             ItemHandler.registerItems();
             RecipeHandler.registerRecipes();
+            WorldgenHandler.registerWorldgen();
             proxy.registerRenderers();
         }
        
