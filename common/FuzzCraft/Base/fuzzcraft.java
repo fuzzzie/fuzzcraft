@@ -1,5 +1,6 @@
 package FuzzCraft.Base;
 
+import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.Configuration;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.Property;
@@ -17,13 +18,21 @@ import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkMod;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
-import FuzzCraft.Blocks.EnderFlower;
+import FuzzCraft.Blocks.*;
+import FuzzCraft.Helpers.*;
 
 
 @Mod(modid="modinfo.MOD_ID", name="modinfo.MOD_NAME", version="modinfo.MOD_VERSION")
 @NetworkMod(clientSideRequired=true, serverSideRequired=false)
 
 public class fuzzcraft {
+    
+    private static final String[] stoneBlockNames = { 
+        "White Block", "Orange Block", "Magenta Block", "Light Blue Block",
+        "Yellow Block", "Light Green Block", "Pink Block", "Dark Grey Block",
+        "Cyan Block", "Purple Block", "Blue Block",
+        "Brown Block", "Green Block", "Red Block", "Black Block"
+    };
 
         @Instance(modinfo.MOD_ID)
         public static fuzzcraft instance;
@@ -31,7 +40,7 @@ public class fuzzcraft {
         @SidedProxy(clientSide=modinfo.CLIENT_PROXY, serverSide=modinfo.SERVER_PROXY)
         public static CommonProxy proxy;
         
-        private static Property blockIdFlower;
+        private static Property blockIdFlower, blockIdStone;
 
         
         @PreInit
@@ -48,13 +57,21 @@ public class fuzzcraft {
          
             // Init blocks
             EnderFlower enderFlower = new EnderFlower(blockIdFlower.getInt());
+            StoneBlock stoneBlock = new StoneBlock(blockIdStone.getInt());
             
             // Register Blocks
             
             LanguageRegistry.addName(enderFlower, "Ender Flower");
             MinecraftForge.setBlockHarvestLevel(enderFlower, "Shovel", 0);
             GameRegistry.registerBlock(enderFlower, "enderFlower");
+         
+            for (int i = 0; i < 16; i++) {
+                ItemStack stoneBlockStack = new ItemStack(stoneBlock, 1, i);
+                LanguageRegistry.addName(stoneBlockStack, stoneBlockNames[stoneBlockStack.getItemDamage()]);
+            }
             
+            MinecraftForge.setBlockHarvestLevel(stoneBlock, "Pick", 0);
+            GameRegistry.registerBlock(stoneBlock, StoneBlockItem.class, "stoneBlock");
             
         }
             
@@ -66,8 +83,11 @@ public class fuzzcraft {
         
         private static void loadConfig(Configuration fc_config)
         {
-        blockIdFlower = fc_config.getBlock("ID.BlockCommon", 1500);
+        blockIdStone = fc_config.getBlock("ID.Stone", 1500);
+        blockIdFlower = fc_config.getBlock("ID.Flower", 1501);
         fc_config.save();
+        
+        
         }
 
 }
