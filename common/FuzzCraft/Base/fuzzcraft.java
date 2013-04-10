@@ -65,7 +65,7 @@ public class fuzzcraft {
             MinecraftForge.setBlockHarvestLevel(enderFlower, "Shovel", 0);
             GameRegistry.registerBlock(enderFlower, "enderFlower");
          
-            for (int i = 0; i < 14; i++) {
+            for (int i = 0; i < 15; i++) {
                 ItemStack stoneBlockStack = new ItemStack(stoneBlock, 1, i);
                 LanguageRegistry.instance().addNameForObject(stoneBlock, "en_us", stoneBlockNames[stoneBlockStack.getItemDamage()]);
 

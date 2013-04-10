@@ -38,7 +38,7 @@ public class StoneBlock extends Block {
     
     @SideOnly(Side.CLIENT)
     public void getSubBlocks(int par1, CreativeTabs tab, List subItems) {
-        for (int ix = 0; ix < 14; ix++) {
+        for (int ix = 0; ix < 15; ix++) {
             subItems.add(new ItemStack(this, 1, ix));
         }
     }
