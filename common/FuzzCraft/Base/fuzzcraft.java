@@ -14,6 +14,7 @@ import FuzzCraft.Blocks.Colorizor;
 import FuzzCraft.Blocks.EnderFlower;
 import FuzzCraft.Blocks.StoneBlock;
 import FuzzCraft.Blocks.StoneBlockItem;
+import FuzzCraft.Handlers.*;
 import cpw.mods.fml.common.FMLLog;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.Init;
@@ -25,6 +26,7 @@ import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkMod;
+import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 
@@ -34,6 +36,8 @@ import cpw.mods.fml.common.registry.LanguageRegistry;
 public class fuzzcraft {
     
     private static Property blockIdFlower, blockIdStone, blockIdBrick, blockIdChisBrick, blockIdColorizor;
+    private Colorizor_Handler guiHandler = new Colorizor_Handler();
+
     
         @Instance(modinfo.MOD_ID)
         public static fuzzcraft instance;
@@ -126,6 +130,10 @@ public class fuzzcraft {
                 ItemStack brickStack = new ItemStack(brickBlock, 1, i);
                 GameRegistry.addRecipe(new ItemStack(chisbrickBlock, 1, i),
                         "xx", "xx", 'x', brickStack); }
+            
+            NetworkRegistry.instance().registerGuiHandler(this, guiHandler);
+            GameRegistry.registerTileEntity(FuzzCraft.TileEntity.colorizor_tileEntity.class,"tileEntityYourFurnace");
+
        
         }
             
