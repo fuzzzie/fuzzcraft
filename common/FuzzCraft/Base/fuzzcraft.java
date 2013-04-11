@@ -1,6 +1,5 @@
 package FuzzCraft.Base;
 
-import java.lang.ref.Reference;
 import java.util.logging.Level;
 
 import net.minecraft.creativetab.CreativeTabs;
@@ -22,7 +21,7 @@ import cpw.mods.fml.common.network.NetworkMod;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 import FuzzCraft.Blocks.*;
-import FuzzCraft.Handlers.*;
+
 
 
 
@@ -64,7 +63,7 @@ public class fuzzcraft {
         @Init
         public void load(FMLInitializationEvent event) {
             
-            CreativeTabs FuzzCraftTab = new CreativeTabs(CreativeTabs.getNextID(), "FuzzCraft Decorations");
+//            CreativeTabs FuzzCraftTab = new CreativeTabs(CreativeTabs.getNextID(), "FuzzCraft Decorations");
           
             proxy.registerRenderers();
          
@@ -75,7 +74,6 @@ public class fuzzcraft {
             ChisBrickBlock chisbrickBlock = new ChisBrickBlock(blockIdChisBrick.getInt());
             
             // Register Blocks //
-            
             
             // Ender Flower
             LanguageRegistry.addName(enderFlower, "Ender Flower");
@@ -95,9 +93,16 @@ public class fuzzcraft {
             GameRegistry.registerBlock(brickBlock, BrickBlockItem.class, "brickBlock");
             for (int i = 0; i < 15; i++){
                 LanguageRegistry.addName(new ItemStack(brickBlock, 1, i),
-                        BrickBlock.brickBlockNames[i]); }    
+                        BrickBlock.brickBlockNames[i]); }   
             
-           
+            // Colored Chiseled Brick
+            
+            MinecraftForge.setBlockHarvestLevel(chisbrickBlock, "Pick", 0);
+            GameRegistry.registerBlock(chisbrickBlock, ChisBrickBlockItem.class, "chisbrickBlock");
+            for (int i = 0; i < 15; i++){
+                LanguageRegistry.addName(new ItemStack(chisbrickBlock, 1, i),
+                        ChisBrickBlock.chisbrickBlockNames[i]); }
+            
         }
             
             

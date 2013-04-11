@@ -7,7 +7,7 @@ import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 
 
-public class BrickBlockItem extends ItemBlock {
+public class ChisBrickBlockItem extends ItemBlock {
     
     public final static String[] subNames = {
         "white",
@@ -27,11 +27,11 @@ public class BrickBlockItem extends ItemBlock {
         "black"
     };
 
-    public BrickBlockItem(int id) {
+    public ChisBrickBlockItem(int id) {
         super(id);
         this.setHasSubtypes(true);
         this.setMaxDamage(0);
-        this.setUnlocalizedName("brickBlock");
+        this.setUnlocalizedName("chisbrickBlock");
         this.setCreativeTab(CreativeTabs.tabBlock);
     }
     
