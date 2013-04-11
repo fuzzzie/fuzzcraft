@@ -31,7 +31,7 @@ import FuzzCraft.Handlers.*;
 
 public class fuzzcraft {
     
-    private static Property blockIdFlower, blockIdStone, blockIdBrick;
+    private static Property blockIdFlower, blockIdStone, blockIdBrick, blockIdChisBrick;
     
         @Instance(modinfo.MOD_ID)
         public static fuzzcraft instance;
@@ -50,6 +50,7 @@ public class fuzzcraft {
                 blockIdStone = fc_config.getBlock("ID.Stone", 1500);
                 blockIdFlower = fc_config.getBlock("ID.Flower", 1501);
                 blockIdBrick = fc_config.getBlock("ID.Brick", 1502);
+                blockIdChisBrick = fc_config.getBlock("ID.Chiseled Brick", 1503);
             }
             catch (Exception e) {
                 FMLLog.log(Level.SEVERE, e, "Error loading FuzzCraft configuration file!");
@@ -64,15 +65,14 @@ public class fuzzcraft {
         public void load(FMLInitializationEvent event) {
             
             CreativeTabs FuzzCraftTab = new CreativeTabs(CreativeTabs.getNextID(), "FuzzCraft Decorations");
-             
-             
-             
-             proxy.registerRenderers();
+          
+            proxy.registerRenderers();
          
             // Init blocks
             EnderFlower enderFlower = new EnderFlower(blockIdFlower.getInt());
             StoneBlock stoneBlock = new StoneBlock(blockIdStone.getInt());
             BrickBlock brickBlock = new BrickBlock(blockIdBrick.getInt());
+            ChisBrickBlock chisbrickBlock = new ChisBrickBlock(blockIdChisBrick.getInt());
             
             // Register Blocks //
             

@@ -16,21 +16,21 @@ public class BrickBlock extends Block {
     protected Icon[] icon = new Icon[15];
     
     public final static String[] brickBlockNames = {
-        "White Stone",
-        "Orange Stone",
-        "Magenta Stone",
-        "Light Blue Stone",
-        "Yellow Stone",
-        "Lime Stone",
-        "Pink Stone",
-        "Dark Grey Stone",
-        "Cyan Stone",
-        "Purple Stone",
-        "Blue Stone",
-        "Brown Stone", 
-        "Green Stone",
-        "Red Stone",
-        "Black Stone"
+        "White Stone Brick",
+        "Orange Stone Brick",
+        "Magenta Stone Brick",
+        "Light Blue Stone Brick",
+        "Yellow Stone Brick",
+        "Lime Stone Brick",
+        "Pink Stone Brick",
+        "Dark Grey Stone Brick",
+        "Cyan Stone Brick",
+        "Purple Stone Brick",
+        "Blue Stone Brick",
+        "Brown Stone Brick", 
+        "Green Stone Brick",
+        "Red Stone Brick",
+        "Black Stone Brick"
     };
     
     

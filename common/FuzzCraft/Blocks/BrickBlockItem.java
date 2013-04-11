@@ -32,7 +32,7 @@ public class BrickBlockItem extends ItemBlock {
         this.setHasSubtypes(true);
         this.setMaxDamage(0);
         this.setUnlocalizedName("brickBlock");
-        this.setCreativeTab(CreativeTabs.tabDecorations);
+        this.setCreativeTab(CreativeTabs.tabBlock);
     }
     
     @Override
