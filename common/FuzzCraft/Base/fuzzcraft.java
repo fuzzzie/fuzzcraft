@@ -2,6 +2,8 @@ package FuzzCraft.Base;
 
 import java.util.logging.Level;
 
+import rpworldgen.rpworldgen;
+
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.Configuration;
@@ -102,11 +104,25 @@ public class fuzzcraft {
             for (int i = 0; i < 15; i++){
                 LanguageRegistry.addName(new ItemStack(chisbrickBlock, 1, i),
                         ChisBrickBlock.chisbrickBlockNames[i]); }
+          
+           
+           // Brick Recipes
             
+            for (int i = 0; i < 15; i++) {
+                ItemStack stoneStack = new ItemStack(stoneBlock, 1, i);
+                GameRegistry.addRecipe(new ItemStack(brickBlock, 1, i),
+                       "xx", "xx", 'x', stoneStack); }
+            
+           // Chiseled Brick Recipes
+            
+            for (int i = 0; i <15; i++) {
+                ItemStack brickStack = new ItemStack(brickBlock, 1, i);
+                GameRegistry.addRecipe(new ItemStack(chisbrickBlock, 1, i),
+                        "xx", "xx", 'x', brickStack); }
+       
         }
             
-            
-       
+        
         @PostInit
         public void postInit(FMLPostInitializationEvent event) {        
         }
