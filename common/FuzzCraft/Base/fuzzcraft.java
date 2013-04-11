@@ -2,8 +2,6 @@ package FuzzCraft.Base;
 
 import java.util.logging.Level;
 
-import rpworldgen.rpworldgen;
-
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.Configuration;
@@ -51,7 +49,7 @@ public class fuzzcraft {
                 blockIdStone = fc_config.getBlock("ID.Stone", 1500);
                 blockIdFlower = fc_config.getBlock("ID.Flower", 1501);
                 blockIdBrick = fc_config.getBlock("ID.Brick", 1502);
-                blockIdChisBrick = fc_config.getBlock("ID.Chiseled Brick", 1503);
+                blockIdChisBrick = fc_config.getBlock("ID.Chiseled_Brick", 1503);
             }
             catch (Exception e) {
                 FMLLog.log(Level.SEVERE, e, "Error loading FuzzCraft configuration file!");
