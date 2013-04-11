@@ -1,12 +1,17 @@
 package FuzzCraft.Blocks;
 
+import java.util.Random;
+
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Icon;
+import net.minecraft.world.World;
 
-public class Colorizor extends Block{
+public class Colorizor extends BlockContainer{
     
     private Icon sides, bottom, top, front;
     
@@ -37,4 +42,17 @@ public class Colorizor extends Block{
         else
             return sides;
      }
+    
+    @Override
+    public int idDropped(int par1, Random par2Random, int par3) {
+             return 1;
+    }
+
+
+    @Override
+    public TileEntity createNewTileEntity(World world) {
+        return new FuzzCraft.TileEntity.colorizor_tileEntity();
+    }
+    
+    
 }
