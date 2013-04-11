@@ -1,14 +1,12 @@
 package FuzzCraft.Blocks;
 
-import net.minecraft.block.BlockContainer;
+import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Icon;
-import net.minecraft.world.World;
 
-public class Colorizor extends BlockContainer{
+public class Colorizor extends Block{
     
     private Icon sides, bottom, top, front;
     
@@ -25,7 +23,7 @@ public class Colorizor extends BlockContainer{
         sides = par1IconRegister.registerIcon("FuzzCraft:colorizor_side");
         bottom = par1IconRegister.registerIcon("FuzzCraft:colorizor_bottom");
         top = par1IconRegister.registerIcon("FuzzCraft:colorizor_top");
-        front = par1IconRegister.registerIcon("FuzzCraft:colorizor_front");
+        front = par1IconRegister.registerIcon("FuzzCraft:colorizor_side");
     }
 
     public Icon getBlockTextureFromSideandMetadata(int i, int j) {
@@ -38,11 +36,4 @@ public class Colorizor extends BlockContainer{
         else
             return sides;
      }
-    
-    @Override
-    public TileEntity createNewTileEntity(World world) {
-       
-        return new FuzzCraft.TileEntity.colorizor_tileEntity();
-    }
-
 }
