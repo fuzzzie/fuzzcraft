@@ -5,8 +5,9 @@ package FuzzCraft.Blocks;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
+import FuzzCraft.Handlers.*;
 
-public class StoneBlockItem extends ItemBlock {
+public class BrickBlockItem extends ItemBlock {
     
     public final static String[] subNames = {
         "white",
@@ -26,12 +27,12 @@ public class StoneBlockItem extends ItemBlock {
         "black"
     };
 
-    public StoneBlockItem(int id) {
+    public BrickBlockItem(int id) {
         super(id);
         this.setHasSubtypes(true);
         this.setMaxDamage(0);
-        this.setUnlocalizedName("stoneBlock");
-        this.setCreativeTab(CreativeTabs.tabBlock);
+        this.setUnlocalizedName("brickBlock");
+        this.setCreativeTab(CreativeTabs.tabDecorations);
     }
     
     @Override
@@ -44,4 +45,5 @@ public class StoneBlockItem extends ItemBlock {
     {
         return this.getUnlocalizedName() + subNames[itemstack.getItemDamage()];
     }
+
 }
