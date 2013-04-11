@@ -30,7 +30,7 @@ import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 
-@Mod(modid="modinfo.MOD_ID", name="modinfo.MOD_NAME", version="modinfo.MOD_VERSION")
+@Mod(modid="fuzzcraft", name="fuzzcraft", version="0.1.0a")
 @NetworkMod(clientSideRequired=true, serverSideRequired=false)
 
 public class fuzzcraft {
@@ -39,7 +39,7 @@ public class fuzzcraft {
     private Colorizor_Handler guiHandler = new Colorizor_Handler();
 
     
-        @Instance(modinfo.MOD_ID)
+        @Instance("fuzzcraft")
         public static fuzzcraft instance;
        
         @SidedProxy(clientSide=modinfo.CLIENT_PROXY, serverSide=modinfo.SERVER_PROXY)

@@ -3,6 +3,8 @@ package FuzzCraft.Blocks;
 import java.util.Random;
 
 import FuzzCraft.Base.fuzzcraft;
+import FuzzCraft.Handlers.FuzzCraftTab;
+import FuzzCraft.TileEntity.colorizor_tileEntity;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
@@ -55,7 +57,7 @@ public class Colorizor extends BlockContainer{
      }
     
     @Override
-    public int idDropped(int par1, Random par2Random, int par3) {
+    public int idDropped(int par1, Random random, int par3) {
              return 1;
     }
 
@@ -70,14 +72,14 @@ public class Colorizor extends BlockContainer{
              this.setDefaultDirection(world, x, y, z);
     }
     
-    private void setDefaultDirection(World par1World, int par2, int par3, int par4)
+    private void setDefaultDirection(World world, int x, int y, int z)
     {
-        if (!par1World.isRemote)
+        if (!world.isRemote)
         {
-            int l = par1World.getBlockId(par2, par3, par4 - 1);
-            int i1 = par1World.getBlockId(par2, par3, par4 + 1);
-            int j1 = par1World.getBlockId(par2 - 1, par3, par4);
-            int k1 = par1World.getBlockId(par2 + 1, par3, par4);
+            int l = world.getBlockId(x, y, z - 1);
+            int i1 = world.getBlockId(x, y, z + 1);
+            int j1 = world.getBlockId(x - 1, y, z);
+            int k1 = world.getBlockId(x + 1, y, z);
             byte b0 = 3;
 
             if (Block.opaqueCubeLookup[l] && !Block.opaqueCubeLookup[i1])
@@ -100,20 +102,20 @@ public class Colorizor extends BlockContainer{
                 b0 = 4;
             }
 
-            par1World.setBlockMetadataWithNotify(par2, par3, par4, b0, 2);
+            world.setBlockMetadataWithNotify(x, y, z, b0, 2);
         }
     }
  
     @Override
-    public boolean onBlockActivated(World par1World, int par2, int par3, int par4, EntityPlayer par5EntityPlayer, int par6, float par7, float par8, float par9) {
-        if (par1World.isRemote) {
+    public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer entityPlayer, int par6, float par7, float par8, float par9) {
+        if (world.isRemote) {
             return true;
         }
-        else if (!par5EntityPlayer.isSneaking()) {
+        else if (!entityPlayer.isSneaking()) {
             
-            FuzzCraft.TileEntity.colorizor_tileEntity var10 = (FuzzCraft.TileEntity.colorizor_tileEntity) par1World.getBlockTileEntity(par2, par3, par4);
+            FuzzCraft.TileEntity.colorizor_tileEntity var10 = (FuzzCraft.TileEntity.colorizor_tileEntity) world.getBlockTileEntity(x, y, z);
                 if (var10 != null) {
-                    par5EntityPlayer.openGui(fuzzcraft.instance, 0, par1World, par2, par3, par4);
+                    entityPlayer.openGui(fuzzcraft.instance, 0, world, x, y, z);
                 }
                 return true;
         }
@@ -149,17 +151,17 @@ public class Colorizor extends BlockContainer{
     }
     
     @Override
-    public void breakBlock(World par1World, int par2, int par3, int par4, int par5, int par6)
+    public void breakBlock(World world, int par2, int par3, int par4, int par5, int par6)
     {
         if (!keepFurnaceInventory)
         {
-            TileEntityFurnace tileentityfurnace = (TileEntityFurnace)par1World.getBlockTileEntity(par2, par3, par4);
+            FuzzCraft.TileEntity.colorizor_tileEntity tileentitycolorizor = (colorizor_tileEntity)world.getBlockTileEntity(par2, par3, par4);
 
-            if (tileentityfurnace != null)
+            if (tileentitycolorizor != null)
             {
-                for (int j1 = 0; j1 < tileentityfurnace.getSizeInventory(); ++j1)
+                for (int j1 = 0; j1 < tileentitycolorizor.getSizeInventory(); ++j1)
                 {
-                    ItemStack itemstack = tileentityfurnace.getStackInSlot(j1);
+                    ItemStack itemstack = tileentitycolorizor.getStackInSlot(j1);
 
                     if (itemstack != null)
                     {
@@ -177,7 +179,7 @@ public class Colorizor extends BlockContainer{
                             }
 
                             itemstack.stackSize -= k1;
-                            EntityItem entityitem = new EntityItem(par1World, (double)((float)par2 + f), (double)((float)par3 + f1), (double)((float)par4 + f2), new ItemStack(itemstack.itemID, k1, itemstack.getItemDamage()));
+                            EntityItem entityitem = new EntityItem(world, (double)((float)par2 + f), (double)((float)par3 + f1), (double)((float)par4 + f2), new ItemStack(itemstack.itemID, k1, itemstack.getItemDamage()));
 
                             if (itemstack.hasTagCompound())
                             {
@@ -188,16 +190,16 @@ public class Colorizor extends BlockContainer{
                             entityitem.motionX = (double)((float)this.colorizorRandom.nextGaussian() * f3);
                             entityitem.motionY = (double)((float)this.colorizorRandom.nextGaussian() * f3 + 0.2F);
                             entityitem.motionZ = (double)((float)this.colorizorRandom.nextGaussian() * f3);
-                            par1World.spawnEntityInWorld(entityitem);
+                            world.spawnEntityInWorld(entityitem);
                         }
                     }
                 }
 
-                par1World.func_96440_m(par2, par3, par4, par5);
+                world.func_96440_m(par2, par3, par4, par5);
             }
         }
 
-        super.breakBlock(par1World, par2, par3, par4, par5, par6);
+        super.breakBlock(world, par2, par3, par4, par5, par6);
     }
 
 
