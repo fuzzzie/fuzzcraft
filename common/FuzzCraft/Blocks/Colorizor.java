@@ -26,7 +26,8 @@ public class Colorizor extends Block{
         front = par1IconRegister.registerIcon("FuzzCraft:colorizor_side");
     }
 
-    public Icon getBlockTextureFromSideandMetadata(int i, int j) {
+    @Override
+    public Icon getBlockTextureFromSideAndMetadata(int i, int j) {
         if (i == 0)
             return bottom;
         if (i == 1)
