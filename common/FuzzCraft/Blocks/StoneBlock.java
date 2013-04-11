@@ -15,6 +15,24 @@ public class StoneBlock extends Block {
     
     protected Icon[] icon = new Icon[15];
     
+    public final static String[] stoneBlockNames = {
+        "White Stone",
+        "Orange Stone",
+        "Magenta Stone",
+        "Light Blue Stone",
+        "Yellow Stone",
+        "Lime Stone",
+        "Pink Stone",
+        "Dark Grey Stone",
+        "Cyan Stone",
+        "Purple Stone",
+        "Blue Stone",
+        "Brown Stone", 
+        "Green Stone",
+        "Red Stone",
+        "Black Stone"
+    };
+    
     
     public StoneBlock(int par1) {
         super(par1, Material.rock);

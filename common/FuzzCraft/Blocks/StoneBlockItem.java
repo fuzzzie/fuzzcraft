@@ -9,9 +9,21 @@ import net.minecraft.item.ItemStack;
 public class StoneBlockItem extends ItemBlock {
     
     public final static String[] subNames = {
-        "white", "orange",  "magenta", "lightBlue", "yellow", "lightGreen",
-        "pink", "darkGrey", "cyan", "purple", "blue", "brown",
-        "green", "red", "black"
+        "white",
+        "orange",
+        "magenta",
+        "lightBlue",
+        "yellow",
+        "lightGreen",
+        "pink",
+        "darkGrey",
+        "cyan",
+        "purple",
+        "blue",
+        "brown", 
+        "green",
+        "red",
+        "black"
     };
 
     public StoneBlockItem(int id) {
@@ -30,13 +42,12 @@ public class StoneBlockItem extends ItemBlock {
     @Override
     public String getUnlocalizedName(ItemStack itemstack)
     {
-        return getUnlocalizedName() + "." + subNames[itemstack.getItemDamage()];
+        return this.getUnlocalizedName() + subNames[itemstack.getItemDamage()];
     }
     
-    
-    public String getItemNameIS(ItemStack is)
-    { 
-        return "stoneBlock" + subNames[is.getItemDamage()];
-    }
+    /*@Override
+    public String getItemDisplayName(ItemStack itemStack) {
+        return this.getUnlocalizedName() + subName[itemStack.getItemDamage()];
+    }*/
 
 }

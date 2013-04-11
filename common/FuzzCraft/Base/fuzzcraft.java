@@ -54,6 +54,8 @@ public class fuzzcraft {
        
         @Init
         public void load(FMLInitializationEvent event) {
+            
+            int i;
             proxy.registerRenderers();
          
             // Init blocks
@@ -67,10 +69,12 @@ public class fuzzcraft {
             GameRegistry.registerBlock(enderFlower, "enderFlower");
          
             
-          
+            MinecraftForge.setBlockHarvestLevel(stoneBlock, "Pick", 0);
+            GameRegistry.registerBlock(stoneBlock, StoneBlockItem.class, "stoneBlock");
             
-           for (int i = 0; i < 16; i++) {
-               LanguageRegistry.addName(new ItemStack(stoneBlock, 1, i), StoneBlockItem.subNames[i]);
+           for (i = 0; i < 15; i++) {
+               LanguageRegistry.addName(new ItemStack(stoneBlock, 1, i), 
+                       StoneBlock.stoneBlockNames[i]);
            }
             
             MinecraftForge.setBlockHarvestLevel(stoneBlock, "Pick", 0);
