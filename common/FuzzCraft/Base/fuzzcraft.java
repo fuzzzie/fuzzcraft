@@ -16,6 +16,7 @@ import FuzzCraft.Blocks.RepulsionBlock;
 import FuzzCraft.Blocks.StoneBlock;
 import FuzzCraft.Blocks.StoneBlockItem;
 import FuzzCraft.Handlers.*;
+import FuzzCraft.Items.ColorCharge;
 import cpw.mods.fml.common.FMLLog;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.Init;
@@ -37,7 +38,7 @@ import cpw.mods.fml.common.registry.LanguageRegistry;
 public class fuzzcraft {
     
     private static Property blockIdFlower, blockIdStone, blockIdBrick, blockIdChisBrick, blockIdColorizor,
-        blockIdRep;
+        blockIdRep, itemIdCharge;
     private Colorizor_Handler guiHandler = new Colorizor_Handler();
 
     
@@ -61,6 +62,7 @@ public class fuzzcraft {
                 blockIdChisBrick = fc_config.getBlock("ID.Chiseled_Brick", 1503);
                 blockIdColorizor = fc_config.getBlock("ID.Colorizor", 1504);
                 blockIdRep = fc_config.getBlock("ID.Repulsor_Block", 1505);
+                itemIdCharge = fc_config.getItem("ID.Color_Charges", 10000);
             }
             catch (Exception e) {
                 FMLLog.log(Level.SEVERE, e, "Error loading FuzzCraft configuration file!");
@@ -86,6 +88,9 @@ public class fuzzcraft {
             Colorizor colorizorBlock = new Colorizor(blockIdColorizor.getInt());
             RepulsionBlock repulsionBlock = new RepulsionBlock(blockIdRep.getInt());
             
+            // Init Items
+            ColorCharge colorCharge = new ColorCharge(itemIdCharge.getInt());
+            
             // Register Blocks //
             
             // Standard Blocks
@@ -100,6 +105,14 @@ public class fuzzcraft {
             GameRegistry.registerBlock(repulsionBlock, "repulsionBlock");
             MinecraftForge.setBlockHarvestLevel(repulsionBlock, "Pick", 0);
             
+            // Color Charges
+            GameRegistry.registerItem(colorCharge, "colorCharge");
+            for (int i = 0; i < 15; i++) {
+                LanguageRegistry.addName(new ItemStack(colorCharge, 1, i), 
+                        ColorCharge.colorChargeNames[i]);
+                
+            }
+           
             // Colored Stone
             
             MinecraftForge.setBlockHarvestLevel(stoneBlock, "Pick", 0);
@@ -142,6 +155,8 @@ public class fuzzcraft {
             NetworkRegistry.instance().registerGuiHandler(this, guiHandler);
             GameRegistry.registerTileEntity(FuzzCraft.TileEntity.colorizor_tileEntity.class,"tileEntityYourFurnace");
 
+            
+            
        
         }
             

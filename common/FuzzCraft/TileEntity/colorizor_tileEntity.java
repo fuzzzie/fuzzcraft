@@ -14,6 +14,7 @@ import net.minecraft.tileentity.TileEntity;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import FuzzCraft.Items.*;
 
 public class colorizor_tileEntity extends TileEntity implements IInventory, ISidedInventory
 {
@@ -287,11 +288,8 @@ public static int getItemBurnTime(ItemStack par0ItemStack)
                          }
                  }
 
-                 if (var1 == Item.stick.itemID) return 100;
-                 if (var1 == Item.coal.itemID) return 1600;
-                 if (var1 == Item.bucketLava.itemID) return 20000;
-                 if (var1 == Block.sapling.blockID) return 100;
-                 if (var1 == Item.blazeRod.itemID) return 2400;
+                 if (var1 == FuzzCraft.Items.ColorCharge.itemID) return 1000;
+                 
                  return GameRegistry.getFuelValue(par0ItemStack);
          }
 }
