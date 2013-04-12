@@ -3,6 +3,9 @@ package FuzzCraft.Blocks;
 
 import java.util.Random;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+
 import net.minecraft.block.BlockFlower;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
@@ -27,11 +30,13 @@ public class EnderFlower extends BlockFlower {
     }
 
     @Override
+    @SideOnly(Side.CLIENT)
     public void registerIcons(IconRegister par1IconRegister) {
         efTexture = par1IconRegister.registerIcon("FuzzCraft:Ender_Flower");
     }
 
     @Override
+    @SideOnly(Side.CLIENT)
     public Icon getBlockTextureFromSideAndMetadata(int i, int j) {
         return efTexture;
     }

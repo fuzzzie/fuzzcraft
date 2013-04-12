@@ -2,6 +2,9 @@ package FuzzCraft.Blocks;
 
 import java.util.Random;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+
 import FuzzCraft.Base.fuzzcraft;
 import FuzzCraft.Handlers.FuzzCraftTab;
 import FuzzCraft.TileEntity.colorizor_tileEntity;
@@ -36,7 +39,8 @@ public class Colorizor extends BlockContainer{
         this.setUnlocalizedName("colorizorblock");
     }
     
-    @Override
+    
+    @SideOnly(Side.CLIENT)
     public void registerIcons(IconRegister par1IconRegister) {
         sides = par1IconRegister.registerIcon("FuzzCraft:colorizor_side");
         bottom = par1IconRegister.registerIcon("FuzzCraft:colorizor_bottom");
@@ -44,7 +48,8 @@ public class Colorizor extends BlockContainer{
         front = par1IconRegister.registerIcon("FuzzCraft:colorizor_side");
     }
 
-    @Override
+    
+    @SideOnly(Side.CLIENT)
     public Icon getBlockTextureFromSideAndMetadata(int i, int j) {
         if (i == 0)
             return bottom;
@@ -108,7 +113,7 @@ public class Colorizor extends BlockContainer{
  
     @Override
     public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer entityPlayer, int par6, float par7, float par8, float par9) {
-        if (world.isRemote) {
+        if (!world.isRemote) {
             return true;
         }
         else if (!entityPlayer.isSneaking()) {

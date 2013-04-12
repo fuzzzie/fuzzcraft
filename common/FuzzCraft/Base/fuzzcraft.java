@@ -12,6 +12,7 @@ import FuzzCraft.Blocks.ChisBrickBlock;
 import FuzzCraft.Blocks.ChisBrickBlockItem;
 import FuzzCraft.Blocks.Colorizor;
 import FuzzCraft.Blocks.EnderFlower;
+import FuzzCraft.Blocks.RepulsionBlock;
 import FuzzCraft.Blocks.StoneBlock;
 import FuzzCraft.Blocks.StoneBlockItem;
 import FuzzCraft.Handlers.*;
@@ -35,7 +36,8 @@ import cpw.mods.fml.common.registry.LanguageRegistry;
 
 public class fuzzcraft {
     
-    private static Property blockIdFlower, blockIdStone, blockIdBrick, blockIdChisBrick, blockIdColorizor;
+    private static Property blockIdFlower, blockIdStone, blockIdBrick, blockIdChisBrick, blockIdColorizor,
+        blockIdRep;
     private Colorizor_Handler guiHandler = new Colorizor_Handler();
 
     
@@ -58,6 +60,7 @@ public class fuzzcraft {
                 blockIdBrick = fc_config.getBlock("ID.Brick", 1502);
                 blockIdChisBrick = fc_config.getBlock("ID.Chiseled_Brick", 1503);
                 blockIdColorizor = fc_config.getBlock("ID.Colorizor", 1504);
+                blockIdRep = fc_config.getBlock("ID.Repulsor_Block", 1505);
             }
             catch (Exception e) {
                 FMLLog.log(Level.SEVERE, e, "Error loading FuzzCraft configuration file!");
@@ -81,16 +84,21 @@ public class fuzzcraft {
             BrickBlock brickBlock = new BrickBlock(blockIdBrick.getInt());
             ChisBrickBlock chisbrickBlock = new ChisBrickBlock(blockIdChisBrick.getInt());
             Colorizor colorizorBlock = new Colorizor(blockIdColorizor.getInt());
+            RepulsionBlock repulsionBlock = new RepulsionBlock(blockIdRep.getInt());
             
             // Register Blocks //
             
-            // Ender Flower
+            // Standard Blocks
             LanguageRegistry.addName(enderFlower, "Ender Flower");
             GameRegistry.registerBlock(enderFlower, "enderFlower");
             
             LanguageRegistry.addName(colorizorBlock, "Colorizor");
             GameRegistry.registerBlock(colorizorBlock, "colorizor");
             MinecraftForge.setBlockHarvestLevel(colorizorBlock, "Pick", 3);
+            
+            LanguageRegistry.addName(repulsionBlock, "Repulsion Block");
+            GameRegistry.registerBlock(repulsionBlock, "repulsionBlock");
+            MinecraftForge.setBlockHarvestLevel(repulsionBlock, "Pick", 0);
             
             // Colored Stone
             
