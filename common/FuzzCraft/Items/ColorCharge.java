@@ -43,7 +43,7 @@ public class ColorCharge extends Item {
         "Red Charge",
         "Black Charge"
     };
-    public static final String ItemId = "id";
+    
     
     @Override
     public String getUnlocalizedName(ItemStack itemstack)
