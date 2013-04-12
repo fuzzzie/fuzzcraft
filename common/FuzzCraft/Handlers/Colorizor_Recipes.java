@@ -4,18 +4,15 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import cpw.mods.fml.common.Mod.Item;
-
 import net.minecraft.block.Block;
-import net.minecraft.item.ItemStack;
+import net.minecraft.item.*;
 
 public class Colorizor_Recipes
 {
 private static final Colorizor_Recipes smeltingBase = new Colorizor_Recipes();
 
-private Map smeltingList = new HashMap();
-private Map experienceList = new HashMap();
+private Map<Integer, ItemStack> smeltingList = new HashMap<Integer, ItemStack>();
+private Map<Integer, Float> experienceList = new HashMap<Integer, Float>();
 private HashMap<List<Integer>, ItemStack> metaSmeltingList = new HashMap<List<Integer>, ItemStack>();
 private HashMap<List<Integer>, Float> metaExperience = new HashMap<List<Integer>, Float>();
 
@@ -24,25 +21,11 @@ public static final Colorizor_Recipes smelting()
          return smeltingBase;
 }
 
-private Colorizor_Recipes()
-{
-     /*    this.addSmelting(Block.oreIron.blockID, new ItemStack(Item.ingotIron), 0.7F);
-         this.addSmelting(Block.oreGold.blockID, new ItemStack(Item.ingotGold), 1.0F);
-         this.addSmelting(Block.oreDiamond.blockID, new ItemStack(Item.diamond), 1.0F);
+private Colorizor_Recipes() {
+    
          this.addSmelting(Block.sand.blockID, new ItemStack(Block.glass), 0.1F);
-         this.addSmelting(Item.porkRaw.itemID, new ItemStack(Item.porkCooked), 0.35F);
-         this.addSmelting(Item.beefRaw.itemID, new ItemStack(Item.beefCooked), 0.35F);
-         this.addSmelting(Item.chickenRaw.itemID, new ItemStack(Item.chickenCooked), 0.35F);
-         this.addSmelting(Item.fishRaw.itemID, new ItemStack(Item.fishCooked), 0.35F);
          this.addSmelting(Block.cobblestone.blockID, new ItemStack(Block.stone), 0.1F);
-         this.addSmelting(Item.clay.itemID, new ItemStack(Item.brick), 0.3F);
-         this.addSmelting(Block.cactus.blockID, new ItemStack(Item.dyePowder, 1, 2), 0.2F);
-         this.addSmelting(Block.wood.blockID, new ItemStack(Item.coal, 1, 1), 0.15F);
-         this.addSmelting(Block.oreEmerald.blockID, new ItemStack(Item.emerald), 1.0F);
-         this.addSmelting(Item.potato.itemID, new ItemStack(Item.bakedPotato), 0.35F);
-         this.addSmelting(Block.oreCoal.blockID, new ItemStack(Item.coal), 0.1F);
-         this.addSmelting(Block.oreRedstone.blockID, new ItemStack(Item.redstone), 0.7F);
-         this.addSmelting(Block.oreLapis.blockID, new ItemStack(Item.dyePowder, 1, 4), 0.2F); */
+         
 }
 
 public void addSmelting(int par1, ItemStack par2ItemStack, float par3)
@@ -54,10 +37,10 @@ public void addSmelting(int par1, ItemStack par2ItemStack, float par3)
 @Deprecated
 public ItemStack getSmeltingResult(int par1)
 {
-         return (ItemStack)this.smeltingList.get(Integer.valueOf(par1));
+         return this.smeltingList.get(Integer.valueOf(par1));
 }
 
-public Map getSmeltingList()
+public Map<Integer, ItemStack> getSmeltingList()
 {
          return this.smeltingList;
 }
@@ -65,7 +48,7 @@ public Map getSmeltingList()
 @Deprecated //In favor of ItemStack sensitive version
 public float getExperience(int par1)
 {
-         return this.experienceList.containsKey(Integer.valueOf(par1)) ? ((Float)this.experienceList.get(Integer.valueOf(par1))).floatValue() : 0.0F;
+         return this.experienceList.containsKey(Integer.valueOf(par1)) ? this.experienceList.get(Integer.valueOf(par1)).floatValue() : 0.0F;
 }
 
 public void addSmelting(int itemID, int metadata, ItemStack itemstack, float experience)
@@ -80,12 +63,12 @@ public ItemStack getSmeltingResult(ItemStack item)
          {
                  return null;
          }
-         ItemStack ret = (ItemStack)metaSmeltingList.get(Arrays.asList(item.itemID, item.getItemDamage()));
+         ItemStack ret = metaSmeltingList.get(Arrays.asList(item.itemID, item.getItemDamage()));
          if (ret != null)
          {
                  return ret;
          }
-         return (ItemStack)smeltingList.get(Integer.valueOf(item.itemID));
+         return smeltingList.get(Integer.valueOf(item.itemID));
 }
 
 public float getExperience(ItemStack item)
@@ -101,7 +84,7 @@ public float getExperience(ItemStack item)
          }
          if (ret < 0 && experienceList.containsKey(item.itemID))
          {
-                 ret = ((Float)experienceList.get(item.itemID)).floatValue();
+                 ret = experienceList.get(item.itemID).floatValue();
          }
          return (ret < 0 ? 0 : ret);
 }

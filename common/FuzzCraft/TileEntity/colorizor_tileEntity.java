@@ -1,8 +1,5 @@
 package FuzzCraft.TileEntity;
 
-import cpw.mods.fml.common.registry.GameRegistry;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.player.EntityPlayer;
@@ -10,14 +7,13 @@ import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
-import net.minecraft.item.ItemHoe;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.ItemSword;
-import net.minecraft.item.ItemTool;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraftforge.common.ForgeDirection;
+import cpw.mods.fml.common.registry.GameRegistry;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public class colorizor_tileEntity extends TileEntity implements IInventory, ISidedInventory
 {
@@ -172,7 +168,6 @@ public boolean isBurning()
 
 public void updateEntity()
 {
-         boolean var1 = this.furnaceBurnTime > 0;
          boolean var2 = false;
 
          if (this.furnaceBurnTime > 0)
@@ -277,8 +272,6 @@ public static int getItemBurnTime(ItemStack par0ItemStack)
          else
          {
                  int var1 = par0ItemStack.getItem().itemID;
-                 Item var2 = par0ItemStack.getItem();
-
                  if (par0ItemStack.getItem() instanceof ItemBlock && Block.blocksList[var1] != null)
                  {
                          Block var3 = Block.blocksList[var1];

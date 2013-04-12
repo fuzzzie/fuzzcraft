@@ -1,14 +1,12 @@
 package FuzzCraft.GUI;
 
-import cpw.mods.fml.common.Mod.Item;
-import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.entity.item.EntityXPOrb;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
-import net.minecraft.stats.AchievementList;
 import net.minecraft.util.MathHelper;
+import cpw.mods.fml.common.registry.GameRegistry;
 
 public class colorizor_slots extends Slot
 {
@@ -21,7 +19,7 @@ public colorizor_slots(EntityPlayer par1EntityPlayer, IInventory par2IInventory,
          this.thePlayer = par1EntityPlayer;
 }
 
-public boolean isItemValid(ItemStack par1ItemStack)
+public boolean isItemValid(ItemStack stack)
 {
          return false;
 }
@@ -36,16 +34,16 @@ public ItemStack decrStackSize(int par1)
          return super.decrStackSize(par1);
 }
 
-public void onPickupFromSlot(EntityPlayer par1EntityPlayer, ItemStack par2ItemStack)
+public void onPickupFromSlot(EntityPlayer entity, ItemStack stack)
 {
-         this.onCrafting(par2ItemStack);
-         super.onPickupFromSlot(par1EntityPlayer, par2ItemStack);
+         this.onCrafting(stack);
+         super.onPickupFromSlot(entity, stack);
 }
 
-protected void onCrafting(ItemStack par1ItemStack, int par2)
+protected void onCrafting(ItemStack Stack, int par2)
 {
          this.field_75228_b += par2;
-         this.onCrafting(par1ItemStack);
+         this.onCrafting(Stack);
 }
 
 protected void onCrafting(ItemStack par1ItemStack)
