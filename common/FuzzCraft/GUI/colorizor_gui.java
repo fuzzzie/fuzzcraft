@@ -28,7 +28,7 @@ public class colorizor_gui extends GuiContainer {
     {
              GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
 //             this.mc.renderEngine.bindTexture("/gui/furnace.png");
-//             this.mc.renderEngine.bindTexture("/mods/FuzzCraft/textures/gui/supercalculator.png");
+             this.mc.renderEngine.bindTexture("/mods/FuzzCraft/textures/gui/colorizorgui.png");
              int var5 = (this.width - this.xSize) / 2;
              int var6 = (this.height - this.ySize) / 2;
              this.drawTexturedModalRect(var5, var6, 0, 0, this.xSize, this.ySize);
