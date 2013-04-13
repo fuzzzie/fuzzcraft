@@ -68,7 +68,7 @@ public class RepulsionBlock extends Block{
             rP = 5;
         }
         
-        entity.motionY+= rP;
+        entity.motionY+= 0.1;
            
     }
 

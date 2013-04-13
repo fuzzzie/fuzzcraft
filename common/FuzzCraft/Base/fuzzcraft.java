@@ -73,8 +73,9 @@ public class fuzzcraft {
                 blockIdColorizor = fc_config.getBlock("ID.Colorizor", 1504);
                 blockIdRep = fc_config.getBlock("ID.Repulsor_Block", 1505);
                 itemIdCharge = fc_config.getItem("ID.Color_Charges", 10000);
-                repulsorPower.comment = "Set the power of Rupulsion Blocks (Default 2)";
-                repulsorPower = fc_config.get(Configuration.CATEGORY_GENERAL, "RepulsionPower", 2);
+                repulsorPower.comment = "Set the power of Repulsion Blocks (Default 2)";
+                Property repulsorPower = fc_config.get(Configuration.CATEGORY_GENERAL, "repulsion_power", 2);
+                repulsionBlock = new RepulsionBlock(blockIdRep.getInt(), repulsorPower.getInt());
             }
             catch (Exception e) {
                 FMLLog.log(Level.SEVERE, e, "Error loading FuzzCraft configuration file!");
@@ -97,7 +98,7 @@ public class fuzzcraft {
             brickBlock = new BrickBlock(blockIdBrick.getInt());
             chisbrickBlock = new ChisBrickBlock(blockIdChisBrick.getInt());
             colorizorBlock = new Colorizor(blockIdColorizor.getInt());
-            repulsionBlock = new RepulsionBlock(blockIdRep.getInt(), repulsorPower.getInt());
+            
             
             // Init Items
             colorCharge = new ColorCharge(itemIdCharge.getInt());
