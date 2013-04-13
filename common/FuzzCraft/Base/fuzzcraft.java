@@ -2,21 +2,14 @@ package FuzzCraft.Base;
 
 import java.util.logging.Level;
 
+import net.minecraft.block.Block;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.Configuration;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.Property;
-import FuzzCraft.Blocks.BrickBlock;
-import FuzzCraft.Blocks.BrickBlockItem;
-import FuzzCraft.Blocks.ChisBrickBlock;
-import FuzzCraft.Blocks.ChisBrickBlockItem;
-import FuzzCraft.Blocks.Colorizor;
-import FuzzCraft.Blocks.EnderFlower;
-import FuzzCraft.Blocks.RepulsionBlock;
-import FuzzCraft.Blocks.StoneBlock;
-import FuzzCraft.Blocks.StoneBlockItem;
+import FuzzCraft.Blocks.*;
 import FuzzCraft.Handlers.*;
-import FuzzCraft.Items.ColorCharge;
+import FuzzCraft.Items.*;
 import cpw.mods.fml.common.FMLLog;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.Init;
@@ -40,7 +33,7 @@ public class fuzzcraft {
     private static Property blockIdFlower, blockIdStone, blockIdBrick, blockIdChisBrick, blockIdColorizor,
         blockIdRep, itemIdCharge;
     
-    public static Property repulsorPower;
+    public static int repulsorPower = 15;
     
     private Colorizor_Handler guiHandler = new Colorizor_Handler();
     
@@ -73,9 +66,18 @@ public class fuzzcraft {
                 blockIdColorizor = fc_config.getBlock("ID.Colorizor", 1504);
                 blockIdRep = fc_config.getBlock("ID.Repulsor_Block", 1505);
                 itemIdCharge = fc_config.getItem("ID.Color_Charges", 10000);
-                repulsorPower.comment = "Set the power of Repulsion Blocks (Default 2)";
-                Property repulsorPower = fc_config.get(Configuration.CATEGORY_GENERAL, "repulsion_power", 2);
-                repulsionBlock = new RepulsionBlock(blockIdRep.getInt(), repulsorPower.getInt());
+
+                Property rP = fc_config.get(Configuration.CATEGORY_GENERAL, "repulsion_power", 15);
+                rP.comment = "Set the power of Repulsion Blocks (Between 1 - 30, Default 15)"; 
+                repulsorPower = rP.getInt();
+                
+                if (repulsorPower == 0) {
+                    repulsorPower = 1;
+                }
+                else if  (repulsorPower > 30) {
+                    repulsorPower = 30;
+                }
+                
             }
             catch (Exception e) {
                 FMLLog.log(Level.SEVERE, e, "Error loading FuzzCraft configuration file!");
@@ -98,6 +100,7 @@ public class fuzzcraft {
             brickBlock = new BrickBlock(blockIdBrick.getInt());
             chisbrickBlock = new ChisBrickBlock(blockIdChisBrick.getInt());
             colorizorBlock = new Colorizor(blockIdColorizor.getInt());
+            repulsionBlock = new RepulsionBlock(blockIdRep.getInt(), repulsorPower);
             
             
             // Init Items
@@ -121,10 +124,8 @@ public class fuzzcraft {
             GameRegistry.registerItem(colorCharge, "colorCharge");
             for (int i = 0; i < 15; i++) {
                 LanguageRegistry.addName(new ItemStack(colorCharge, 1, i),
-                        ColorCharge.colorChargeNames[i]);
-                
-            }
-           
+                        ColorCharge.colorChargeNames[i]); }
+            
             // Colored Stone
             
             MinecraftForge.setBlockHarvestLevel(stoneBlock, "Pick", 0);
@@ -148,8 +149,7 @@ public class fuzzcraft {
             for (int i = 0; i < 15; i++){
                 LanguageRegistry.addName(new ItemStack(chisbrickBlock, 1, i),
                         ChisBrickBlock.chisbrickBlockNames[i]); }
-          
-           
+            
            // Brick Recipes
             
             for (int i = 0; i < 15; i++) {
@@ -164,12 +164,18 @@ public class fuzzcraft {
                 GameRegistry.addRecipe(new ItemStack(chisbrickBlock, 1, i),
                         "xx", "xx", 'x', brickStack); }
             
+            // Temp Colorizor Recipes
+            
+            ItemStack stoneStack  = new ItemStack(Block.stone);
+            
+            for (int i = 0; i < 15; i++) {
+                ItemStack colorizorStack = new ItemStack(fuzzcraft.colorCharge, 1, i);
+                GameRegistry.addRecipe(new ItemStack(fuzzcraft.stoneBlock, 1, i), "x", "c", 'x', stoneStack, 'c', colorizorStack); 
+            }
+            
             NetworkRegistry.instance().registerGuiHandler(this, guiHandler);
-            GameRegistry.registerTileEntity(FuzzCraft.TileEntity.colorizor_tileEntity.class,"tileEntityYourFurnace");
-
+            GameRegistry.registerTileEntity(FuzzCraft.TileEntity.colorizor_tileEntity.class,"colorizor_tileEntity");
             
-            
-       
         }
             
         

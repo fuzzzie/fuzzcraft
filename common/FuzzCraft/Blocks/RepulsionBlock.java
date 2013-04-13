@@ -60,15 +60,8 @@ public class RepulsionBlock extends Block{
     
     @Override
     public void onEntityCollidedWithBlock(World world, int x, int y, int z, Entity entity) {
-        
-        if (rP == 0) {
-            rP = 1;
-        }
-        else if  (rP > 3) {
-            rP = 5;
-        }
-        
-        entity.motionY+= 0.1;
+
+        entity.motionY+= rP;
            
     }
 

@@ -1,7 +1,6 @@
 package FuzzCraft.Items;
 
 import java.util.List;
-import java.util.Random;
 
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
