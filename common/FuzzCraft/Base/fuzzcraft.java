@@ -168,11 +168,38 @@ public class fuzzcraft {
             
             ItemStack stoneStack  = new ItemStack(Block.stone);
             
-            for (int i = 0; i < 15; i++) {
-                ItemStack colorizorStack = new ItemStack(fuzzcraft.colorCharge, 1, i);
-                GameRegistry.addRecipe(new ItemStack(fuzzcraft.stoneBlock, 1, i), "x", "c", 'x', stoneStack, 'c', colorizorStack); 
-            }
+            ItemStack colorizorStack0 = new ItemStack(fuzzcraft.colorCharge, 64, 0);
+            ItemStack colorizorStack1 = new ItemStack(fuzzcraft.colorCharge, 64, 1);
+            ItemStack colorizorStack2 = new ItemStack(fuzzcraft.colorCharge, 64, 2);
+            ItemStack colorizorStack3 = new ItemStack(fuzzcraft.colorCharge, 64, 3);
+            ItemStack colorizorStack4 = new ItemStack(fuzzcraft.colorCharge, 64, 4);
+            ItemStack colorizorStack5 = new ItemStack(fuzzcraft.colorCharge, 64, 5);
+            ItemStack colorizorStack6 = new ItemStack(fuzzcraft.colorCharge, 64, 6);
+            ItemStack colorizorStack7 = new ItemStack(fuzzcraft.colorCharge, 64, 7);
+            ItemStack colorizorStack8 = new ItemStack(fuzzcraft.colorCharge, 64, 8);
+            ItemStack colorizorStack9 = new ItemStack(fuzzcraft.colorCharge, 64, 9);
+            ItemStack colorizorStack10 = new ItemStack(fuzzcraft.colorCharge, 64, 10);
+            ItemStack colorizorStack11 = new ItemStack(fuzzcraft.colorCharge, 64, 11);
+            ItemStack colorizorStack12 = new ItemStack(fuzzcraft.colorCharge, 64, 12);
+            ItemStack colorizorStack13 = new ItemStack(fuzzcraft.colorCharge, 64, 13);
+            ItemStack colorizorStack14 = new ItemStack(fuzzcraft.colorCharge, 64, 14); 
             
+            GameRegistry.addShapelessRecipe(new ItemStack(fuzzcraft.stoneBlock, 1, 0), stoneStack, colorizorStack0);
+            GameRegistry.addShapelessRecipe(new ItemStack(fuzzcraft.stoneBlock, 1, 1), stoneStack, colorizorStack1);
+            GameRegistry.addShapelessRecipe(new ItemStack(fuzzcraft.stoneBlock, 1, 2), stoneStack, colorizorStack2);
+            GameRegistry.addShapelessRecipe(new ItemStack(fuzzcraft.stoneBlock, 1, 3), stoneStack, colorizorStack3);
+            GameRegistry.addShapelessRecipe(new ItemStack(fuzzcraft.stoneBlock, 1, 4), stoneStack, colorizorStack4);
+            GameRegistry.addShapelessRecipe(new ItemStack(fuzzcraft.stoneBlock, 1, 5), stoneStack, colorizorStack5);
+            GameRegistry.addShapelessRecipe(new ItemStack(fuzzcraft.stoneBlock, 1, 6), stoneStack, colorizorStack6);
+            GameRegistry.addShapelessRecipe(new ItemStack(fuzzcraft.stoneBlock, 1, 7), stoneStack, colorizorStack7);
+            GameRegistry.addShapelessRecipe(new ItemStack(fuzzcraft.stoneBlock, 1, 8), stoneStack, colorizorStack8);
+            GameRegistry.addShapelessRecipe(new ItemStack(fuzzcraft.stoneBlock, 1, 9), stoneStack, colorizorStack9);
+            GameRegistry.addShapelessRecipe(new ItemStack(fuzzcraft.stoneBlock, 1, 10), stoneStack, colorizorStack10);
+            GameRegistry.addShapelessRecipe(new ItemStack(fuzzcraft.stoneBlock, 1, 11), stoneStack, colorizorStack11);
+            GameRegistry.addShapelessRecipe(new ItemStack(fuzzcraft.stoneBlock, 1, 12), stoneStack, colorizorStack12);
+            GameRegistry.addShapelessRecipe(new ItemStack(fuzzcraft.stoneBlock, 1, 13), stoneStack, colorizorStack13);
+            GameRegistry.addShapelessRecipe(new ItemStack(fuzzcraft.stoneBlock, 1, 14), stoneStack, colorizorStack14); 
+                
             NetworkRegistry.instance().registerGuiHandler(this, guiHandler);
             GameRegistry.registerTileEntity(FuzzCraft.TileEntity.colorizor_tileEntity.class,"colorizor_tileEntity");
             

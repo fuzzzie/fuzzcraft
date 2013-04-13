@@ -16,6 +16,8 @@ public class ColorCharge extends Item {
         this.setUnlocalizedName("colorcharge");
         this.setCreativeTab(CreativeTabs.tabMaterials);
         this.itemID(id);
+        this.setMaxDamage(64); 
+        this.setMaxStackSize(16);
     }
 
     private void itemID(int id) {
@@ -60,5 +62,4 @@ public class ColorCharge extends Item {
             subItems.add(new ItemStack(this, 1, i));
         }
     }
-    
-}
+
