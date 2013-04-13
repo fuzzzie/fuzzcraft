@@ -27,7 +27,7 @@ public class RepulsionBlock extends Block{
         this.setResistance(30.0F);
         this.setUnlocalizedName("repulsionBlock");
         this.setCreativeTab(CreativeTabs.tabBlock);
-        this.rP = repulsorPower;    
+        this.rP = (float)repulsorPower / 10;    
    }
 
  
