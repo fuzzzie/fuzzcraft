@@ -62,4 +62,4 @@ public class ColorCharge extends Item {
             subItems.add(new ItemStack(this, 1, i));
         }
     }
-
+}
