@@ -39,8 +39,18 @@ public class fuzzcraft {
     
     private static Property blockIdFlower, blockIdStone, blockIdBrick, blockIdChisBrick, blockIdColorizor,
         blockIdRep, itemIdCharge;
+    
+    public static Property repulsorPower;
+    
     private Colorizor_Handler guiHandler = new Colorizor_Handler();
-
+    
+    public static ColorCharge colorCharge;
+    public static EnderFlower enderFlower;
+    public static StoneBlock stoneBlock;
+    public static BrickBlock brickBlock;
+    public static ChisBrickBlock chisbrickBlock;
+    public static Colorizor colorizorBlock;
+    public static RepulsionBlock repulsionBlock;
     
         @Instance("fuzzcraft")
         public static fuzzcraft instance;
@@ -49,7 +59,7 @@ public class fuzzcraft {
         public static CommonProxy proxy;
         
         @PreInit
-        public void preInit(FMLPreInitializationEvent event) { 
+        public void preInit(FMLPreInitializationEvent event) {
             
             Configuration fc_config = new Configuration(event.getSuggestedConfigurationFile());
             
@@ -63,6 +73,8 @@ public class fuzzcraft {
                 blockIdColorizor = fc_config.getBlock("ID.Colorizor", 1504);
                 blockIdRep = fc_config.getBlock("ID.Repulsor_Block", 1505);
                 itemIdCharge = fc_config.getItem("ID.Color_Charges", 10000);
+                repulsorPower.comment = "Set the power of Rupulsion Blocks (Default 2)";
+                repulsorPower = fc_config.get(Configuration.CATEGORY_GENERAL, "RepulsionPower", 2);
             }
             catch (Exception e) {
                 FMLLog.log(Level.SEVERE, e, "Error loading FuzzCraft configuration file!");
@@ -76,20 +88,19 @@ public class fuzzcraft {
         @Init
         public void load(FMLInitializationEvent event) {
             
-//            CreativeTabs FuzzCraftTab = new CreativeTabs(CreativeTabs.getNextID(), "FuzzCraft Decorations");
           
             proxy.registerRenderers();
          
             // Init blocks
-            EnderFlower enderFlower = new EnderFlower(blockIdFlower.getInt());
-            StoneBlock stoneBlock = new StoneBlock(blockIdStone.getInt());
-            BrickBlock brickBlock = new BrickBlock(blockIdBrick.getInt());
-            ChisBrickBlock chisbrickBlock = new ChisBrickBlock(blockIdChisBrick.getInt());
-            Colorizor colorizorBlock = new Colorizor(blockIdColorizor.getInt());
-            RepulsionBlock repulsionBlock = new RepulsionBlock(blockIdRep.getInt());
+            enderFlower = new EnderFlower(blockIdFlower.getInt());
+            stoneBlock = new StoneBlock(blockIdStone.getInt());
+            brickBlock = new BrickBlock(blockIdBrick.getInt());
+            chisbrickBlock = new ChisBrickBlock(blockIdChisBrick.getInt());
+            colorizorBlock = new Colorizor(blockIdColorizor.getInt());
+            repulsionBlock = new RepulsionBlock(blockIdRep.getInt(), repulsorPower.getInt());
             
             // Init Items
-            ColorCharge colorCharge = new ColorCharge(itemIdCharge.getInt());
+            colorCharge = new ColorCharge(itemIdCharge.getInt());
             
             // Register Blocks //
             
@@ -108,7 +119,7 @@ public class fuzzcraft {
             // Color Charges
             GameRegistry.registerItem(colorCharge, "colorCharge");
             for (int i = 0; i < 15; i++) {
-                LanguageRegistry.addName(new ItemStack(colorCharge, 1, i), 
+                LanguageRegistry.addName(new ItemStack(colorCharge, 1, i),
                         ColorCharge.colorChargeNames[i]);
                 
             }
@@ -118,8 +129,8 @@ public class fuzzcraft {
             MinecraftForge.setBlockHarvestLevel(stoneBlock, "Pick", 0);
             GameRegistry.registerBlock(stoneBlock, StoneBlockItem.class, "stoneBlock");
             for (int i = 0; i < 15; i++) {
-                LanguageRegistry.addName(new ItemStack(stoneBlock, 1, i), 
-                       StoneBlock.stoneBlockNames[i]); }   
+                LanguageRegistry.addName(new ItemStack(stoneBlock, 1, i),
+                       StoneBlock.stoneBlockNames[i]); }
             
             // Colored Brick
             
@@ -127,7 +138,7 @@ public class fuzzcraft {
             GameRegistry.registerBlock(brickBlock, BrickBlockItem.class, "brickBlock");
             for (int i = 0; i < 15; i++){
                 LanguageRegistry.addName(new ItemStack(brickBlock, 1, i),
-                        BrickBlock.brickBlockNames[i]); }   
+                        BrickBlock.brickBlockNames[i]); }
             
             // Colored Chiseled Brick
             
@@ -162,6 +173,6 @@ public class fuzzcraft {
             
         
         @PostInit
-        public void postInit(FMLPostInitializationEvent event) {        
+        public void postInit(FMLPostInitializationEvent event) {
         }
   }

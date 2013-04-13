@@ -13,17 +13,24 @@ import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.Icon;
 import net.minecraft.world.World;
 
+
 public class RepulsionBlock extends Block{
     
+    public float rP;
+    
     private Icon repText;
+   
 
-    public RepulsionBlock(int id) {
+    public RepulsionBlock(int id, int repulsorPower) {
         super(id, Material.rock);
         this.setHardness(1.5F);
         this.setResistance(30.0F);
         this.setUnlocalizedName("repulsionBlock");
         this.setCreativeTab(CreativeTabs.tabBlock);
+        this.rP = repulsorPower;    
    }
+
+ 
 
     @SideOnly(Side.CLIENT)
     public void registerIcons(IconRegister icon) {
@@ -53,6 +60,16 @@ public class RepulsionBlock extends Block{
     
     @Override
     public void onEntityCollidedWithBlock(World world, int x, int y, int z, Entity entity) {
-        entity.motionY+=2;
+        
+        if (rP == 0) {
+            rP = 1;
+        }
+        else if  (rP > 3) {
+            rP = 5;
+        }
+        
+        entity.motionY+= rP;
+           
     }
-}
+
+}    

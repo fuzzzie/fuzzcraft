@@ -11,9 +11,11 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraftforge.common.ForgeDirection;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import FuzzCraft.Base.fuzzcraft;
 import FuzzCraft.Items.*;
 
 public class colorizor_tileEntity extends TileEntity implements IInventory, ISidedInventory
@@ -288,7 +290,7 @@ public static int getItemBurnTime(ItemStack par0ItemStack)
                          }
                  }
 
-                 if (var1 == FuzzCraft.Items.ColorCharge.itemID) return 1000;
+                 if (var1 == fuzzcraft.colorCharge.itemID) return 1000;
                  
                  return GameRegistry.getFuelValue(par0ItemStack);
          }
@@ -337,13 +339,13 @@ public boolean isInvNameLocalized() {
 @Override
 public boolean isUseableByPlayer(EntityPlayer entityplayer) {
     // TODO Auto-generated method stub
-    return false;
+    return true;
 }
 
 @Override
 public boolean isStackValidForSlot(int i, ItemStack itemstack) {
     // TODO Auto-generated method stub
-    return false;
+    return true;
 }
 
 @Override

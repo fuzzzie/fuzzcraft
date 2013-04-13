@@ -16,6 +16,11 @@ public class ColorCharge extends Item {
         super(id);
         this.setUnlocalizedName("colorcharge");
         this.setCreativeTab(CreativeTabs.tabMaterials);
+        this.itemID(id);
+    }
+
+    private void itemID(int id) {
+        return;
     }
 
     @Override
@@ -43,7 +48,6 @@ public class ColorCharge extends Item {
         "Red Charge",
         "Black Charge"
     };
-    
     
     @Override
     public String getUnlocalizedName(ItemStack itemstack)
