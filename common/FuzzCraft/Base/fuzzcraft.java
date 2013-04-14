@@ -31,7 +31,7 @@ import cpw.mods.fml.common.registry.LanguageRegistry;
 public class fuzzcraft {
     
     private static Property blockIdFlower, blockIdStone, blockIdBrick, blockIdChisBrick, blockIdColorizor,
-        blockIdRep, itemIdCharge0, itemIdCharge1, itemIdCharge2, iteIdCharge3, itemIdCharge4, itemIdCharge5,
+        blockIdRep, itemIdCharge0, itemIdCharge1, itemIdCharge2, itemIdCharge3, itemIdCharge4, itemIdCharge5,
         itemIdCharge6, itemIdCharge7, itemIdCharge8, itemIdCharge9, itemIdCharge10, itemIdCharge11, itemIdCharge12,
         itemIdCharge13, itemIdCharge14;
     
@@ -70,8 +70,22 @@ public class fuzzcraft {
                 blockIdChisBrick = fc_config.getBlock("ID.Chiseled_Brick", 1503);
                 blockIdColorizor = fc_config.getBlock("ID.Colorizor", 1504);
                 blockIdRep = fc_config.getBlock("ID.Repulsor_Block", 1505);
-                itemIdCharge = fc_config.getItem("ID.Color_Charges", 10000);
-
+                itemIdCharge0 = fc_config.getItem("ID.White_Charge", 10000);
+                itemIdCharge1 = fc_config.getItem("ID.Orange_Charge", 10001);
+                itemIdCharge2 = fc_config.getItem("ID.Magenta_Charge", 10002);
+                itemIdCharge3 = fc_config.getItem("ID.LightBlue_Charge", 10003);
+                itemIdCharge4 = fc_config.getItem("ID.Yellow_Charge", 10004);
+                itemIdCharge5 = fc_config.getItem("ID.Lime_Charge", 10005);
+                itemIdCharge6 = fc_config.getItem("ID.Pink_Charge", 10006);
+                itemIdCharge7 = fc_config.getItem("ID.DarkGrey_Charge", 10007);
+                itemIdCharge8 = fc_config.getItem("ID.Cyan_Charge", 10008);
+                itemIdCharge9 = fc_config.getItem("ID.Purple_Charge", 10009);
+                itemIdCharge10 = fc_config.getItem("ID.Blue_Charge", 10010);
+                itemIdCharge11 = fc_config.getItem("ID.Brown_Charge", 10011);
+                itemIdCharge12 = fc_config.getItem("ID.Green_Charge", 10012);
+                itemIdCharge13 = fc_config.getItem("ID.Red_Charge", 10013);
+                itemIdCharge14 = fc_config.getItem("ID.Black_Charge", 10014);
+   
                 Property rP = fc_config.get(Configuration.CATEGORY_GENERAL, "repulsion_power", 15);
                 rP.comment = "Set the power of Repulsion Blocks (Between 1 - 30, Default 15)"; 
                 repulsorPower = rP.getInt();
