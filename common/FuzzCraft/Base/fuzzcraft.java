@@ -2,7 +2,6 @@ package FuzzCraft.Base;
 
 import java.util.logging.Level;
 
-import net.minecraft.block.Block;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.Configuration;
 import net.minecraftforge.common.MinecraftForge;
@@ -30,8 +29,8 @@ import cpw.mods.fml.common.registry.LanguageRegistry;
 
 public class fuzzcraft {
     
-    private static Property blockIdFlower, blockIdStone, blockIdBrick, blockIdChisBrick, blockIdColorizor,
-        blockIdRep, itemIdCharge;
+    private static Property blockIdStone, blockIdBrick, blockIdChisBrick, blockIdColorizor,
+        blockIdRep, blockIdSpawnerI, blockIdSpawnerA, itemIdCharge;
     
     public static int repulsorPower = 15;
     
@@ -39,12 +38,14 @@ public class fuzzcraft {
     
     public static ColorCharge colorCharge;
     
-    public static EnderFlower enderFlower;
     public static StoneBlock stoneBlock;
     public static BrickBlock brickBlock;
     public static ChisBrickBlock chisbrickBlock;
     public static Colorizor colorizorBlock;
     public static RepulsionBlock repulsionBlock;
+    public static ZombieESpawner zombieespawnerBlockI;
+    public static ZombieESpawner zombieespawnerBlockA;
+    
     
         @Instance("fuzzcraft")
         public static fuzzcraft instance;
@@ -61,11 +62,14 @@ public class fuzzcraft {
                 fc_config.load();
                 
                 blockIdStone = fc_config.getBlock("ID.Stone", 1500);
-                blockIdFlower = fc_config.getBlock("ID.Flower", 1501);
                 blockIdBrick = fc_config.getBlock("ID.Brick", 1502);
                 blockIdChisBrick = fc_config.getBlock("ID.Chiseled_Brick", 1503);
                 blockIdColorizor = fc_config.getBlock("ID.Colorizor", 1504);
                 blockIdRep = fc_config.getBlock("ID.Repulsor_Block", 1505);
+                
+                blockIdSpawnerI = fc_config.getBlock("ID.Spawner", 1506);
+                blockIdSpawnerA = fc_config.getBlock("ID.ActiveSpawner", 1507);
+                
                 itemIdCharge = fc_config.getItem("ID.White_Charge", 10000);
                 
    
@@ -95,12 +99,13 @@ public class fuzzcraft {
             proxy.registerRenderers();
          
             // Init blocks
-            enderFlower = new EnderFlower(blockIdFlower.getInt());
             stoneBlock = new StoneBlock(blockIdStone.getInt());
             brickBlock = new BrickBlock(blockIdBrick.getInt());
             chisbrickBlock = new ChisBrickBlock(blockIdChisBrick.getInt());
             colorizorBlock = new Colorizor(blockIdColorizor.getInt());
             repulsionBlock = new RepulsionBlock(blockIdRep.getInt(), repulsorPower);
+            zombieespawnerBlockI = new ZombieESpawner(blockIdSpawnerI.getInt(), false);
+            zombieespawnerBlockA = new ZombieESpawner(blockIdSpawnerA.getInt(), true);
             
             // Init Items
             colorCharge = new ColorCharge(itemIdCharge.getInt());
@@ -108,8 +113,6 @@ public class fuzzcraft {
             // Register Blocks //
             
             // Standard Blocks
-            LanguageRegistry.addName(enderFlower, "Ender Flower");
-            GameRegistry.registerBlock(enderFlower, "enderFlower");
             
             LanguageRegistry.addName(colorizorBlock, "Colorizor");
             GameRegistry.registerBlock(colorizorBlock, "colorizor");
@@ -118,6 +121,16 @@ public class fuzzcraft {
             LanguageRegistry.addName(repulsionBlock, "Repulsion Block");
             GameRegistry.registerBlock(repulsionBlock, "repulsionBlock");
             MinecraftForge.setBlockHarvestLevel(repulsionBlock, "Pick", 0);
+            
+            LanguageRegistry.addName(zombieespawnerBlockI, "Enhanced Zombie Spawner");
+            GameRegistry.registerBlock(zombieespawnerBlockI, "zombieespawnerBlockI");
+            MinecraftForge.setBlockHarvestLevel(zombieespawnerBlockI, "Pick", 3);
+            
+            LanguageRegistry.addName(zombieespawnerBlockA, "Enhanced Zombie Spawner");
+            GameRegistry.registerBlock(zombieespawnerBlockA, "zombieespawnerBlockA");
+            MinecraftForge.setBlockHarvestLevel(zombieespawnerBlockA, "Pick", 3);
+            
+            
             
             // Color Charges
             GameRegistry.registerItem(colorCharge, "colorCharge0");
