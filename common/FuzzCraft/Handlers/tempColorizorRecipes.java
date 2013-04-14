@@ -11,7 +11,7 @@ public class tempColorizorRecipes {
         ItemStack stoneStack  = new ItemStack(Block.stone);
         
         for (int i = 0; i < 15; i++) {
-            ItemStack colorizorStack = new ItemStack(fuzzcraft.colorCharge, 1, i);
+            ItemStack colorizorStack = new ItemStack(fuzzcraft.colorCharge0, 1, i);
             GameRegistry.addRecipe(new ItemStack(fuzzcraft.stoneBlock, 1, i), "x", "c", 'x', stoneStack, 'c', colorizorStack); 
         }
     }

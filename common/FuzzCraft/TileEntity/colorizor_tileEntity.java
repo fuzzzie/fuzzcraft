@@ -294,7 +294,7 @@ public static int getItemBurnTime(ItemStack par0ItemStack)
                          }
                  }
 
-                 if (var1 == fuzzcraft.colorCharge.itemID) return 1000;
+                 if (var1 == fuzzcraft.colorCharge0.itemID) return 1000;
                  
                  return GameRegistry.getFuelValue(par0ItemStack);
          }

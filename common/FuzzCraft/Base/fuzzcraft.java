@@ -119,7 +119,6 @@ public class fuzzcraft {
             colorizorBlock = new Colorizor(blockIdColorizor.getInt());
             repulsionBlock = new RepulsionBlock(blockIdRep.getInt(), repulsorPower);
             
-            
             // Init Items
             colorCharge0 = new ColorCharge(itemIdCharge0.getInt());
             colorCharge1 = new ColorCharge(itemIdCharge1.getInt());
@@ -197,7 +196,6 @@ public class fuzzcraft {
             GameRegistry.registerItem(colorCharge14, "colorCharge14");
             LanguageRegistry.addName(colorCharge14, "Black Color Charge"); 
             
-            
             // Colored Stone
             
             MinecraftForge.setBlockHarvestLevel(stoneBlock, "Pick", 0);
@@ -238,12 +236,7 @@ public class fuzzcraft {
             
             // Temp Colorizor Recipes
             
-            ItemStack stoneStack  = new ItemStack(Block.stone);
-            
-            for (int i = 0; i < 15; i++){
-                
-            }
-            
+            ItemStack stoneStack  = new ItemStack(Block.stone, 64);
             
             ItemStack colorizorStack0 = new ItemStack(fuzzcraft.colorCharge0, 64);
             ItemStack colorizorStack1 = new ItemStack(fuzzcraft.colorCharge1, 64);
