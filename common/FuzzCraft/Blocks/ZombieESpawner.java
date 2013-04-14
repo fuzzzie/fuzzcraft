@@ -26,15 +26,15 @@ public class ZombieESpawner extends Block {
     }
 
     @SideOnly(Side.CLIENT)
-    public void registerIcons(IconRegister par1IconRegister)
+    public void registerIcons(IconRegister icon)
     {
         if (this.powered)
         {
-            this.blockIcon = par1IconRegister.registerIcon("FuzzCraft:spawnerA");
+            this.blockIcon = icon.registerIcon("FuzzCraft:spawnerA");
         }
         else
         {
-            this.blockIcon = par1IconRegister.registerIcon("FuzzCraft:spawnerI");
+            this.blockIcon = icon.registerIcon("FuzzCraft:spawnerI");
         }
     }
 
@@ -68,9 +68,6 @@ public class ZombieESpawner extends Block {
         }
     }
 
-    /**
-     * Ticks the block if it's been scheduled
-     */
     public void updateTick(World world, int x, int y, int z, Random rand)
     {
         if (!world.isRemote && this.powered && !world.isBlockIndirectlyGettingPowered(x, y, z))
