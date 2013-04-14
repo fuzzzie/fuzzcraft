@@ -31,13 +31,18 @@ import cpw.mods.fml.common.registry.LanguageRegistry;
 public class fuzzcraft {
     
     private static Property blockIdFlower, blockIdStone, blockIdBrick, blockIdChisBrick, blockIdColorizor,
-        blockIdRep, itemIdCharge;
+        blockIdRep, itemIdCharge0, itemIdCharge1, itemIdCharge2, iteIdCharge3, itemIdCharge4, itemIdCharge5,
+        itemIdCharge6, itemIdCharge7, itemIdCharge8, itemIdCharge9, itemIdCharge10, itemIdCharge11, itemIdCharge12,
+        itemIdCharge13, itemIdCharge14;
     
     public static int repulsorPower = 15;
     
     private Colorizor_Handler guiHandler = new Colorizor_Handler();
     
-    public static ColorCharge colorCharge;
+    public static ColorCharge colorCharge0, colorCharge1, colorCharge2, colorCharge3, 
+    colorCharge4, colorCharge5, colorCharge6, colorCharge7, colorCharge8, colorCharge9, 
+    colorCharge10, colorCharge11, colorCharge12, colorCharge13, colorCharge14;
+    
     public static EnderFlower enderFlower;
     public static StoneBlock stoneBlock;
     public static BrickBlock brickBlock;
@@ -167,6 +172,11 @@ public class fuzzcraft {
             // Temp Colorizor Recipes
             
             ItemStack stoneStack  = new ItemStack(Block.stone);
+            
+            for (int i = 0; i < 15; i++){
+                
+            }
+            
             
             ItemStack colorizorStack0 = new ItemStack(fuzzcraft.colorCharge, 64, 0);
             ItemStack colorizorStack1 = new ItemStack(fuzzcraft.colorCharge, 64, 1);
