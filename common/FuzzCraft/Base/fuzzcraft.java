@@ -96,7 +96,6 @@ public class fuzzcraft {
                 else if  (repulsorPower > 30) {
                     repulsorPower = 30;
                 }
-                
             }
             catch (Exception e) {
                 FMLLog.log(Level.SEVERE, e, "Error loading FuzzCraft configuration file!");
@@ -110,7 +109,6 @@ public class fuzzcraft {
         @Init
         public void load(FMLInitializationEvent event) {
             
-          
             proxy.registerRenderers();
          
             // Init blocks
@@ -123,7 +121,21 @@ public class fuzzcraft {
             
             
             // Init Items
-            colorCharge = new ColorCharge(itemIdCharge.getInt());
+            colorCharge0 = new ColorCharge(itemIdCharge0.getInt());
+            colorCharge1 = new ColorCharge(itemIdCharge1.getInt());
+            colorCharge2 = new ColorCharge(itemIdCharge2.getInt());
+            colorCharge3 = new ColorCharge(itemIdCharge3.getInt());
+            colorCharge4 = new ColorCharge(itemIdCharge4.getInt());
+            colorCharge5 = new ColorCharge(itemIdCharge5.getInt());
+            colorCharge6 = new ColorCharge(itemIdCharge6.getInt());
+            colorCharge7 = new ColorCharge(itemIdCharge7.getInt());
+            colorCharge8 = new ColorCharge(itemIdCharge8.getInt());
+            colorCharge9 = new ColorCharge(itemIdCharge9.getInt());
+            colorCharge10 = new ColorCharge(itemIdCharge10.getInt());
+            colorCharge11 = new ColorCharge(itemIdCharge11.getInt());
+            colorCharge12 = new ColorCharge(itemIdCharge12.getInt());
+            colorCharge13 = new ColorCharge(itemIdCharge13.getInt());
+            colorCharge14 = new ColorCharge(itemIdCharge14.getInt());
             
             // Register Blocks //
             
@@ -140,10 +152,51 @@ public class fuzzcraft {
             MinecraftForge.setBlockHarvestLevel(repulsionBlock, "Pick", 0);
             
             // Color Charges
-            GameRegistry.registerItem(colorCharge, "colorCharge");
-            for (int i = 0; i < 15; i++) {
-                LanguageRegistry.addName(new ItemStack(colorCharge, 1, i),
-                        ColorCharge.colorChargeNames[i]); }
+            GameRegistry.registerItem(colorCharge0, "colorCharge0");
+            LanguageRegistry.addName(colorCharge0, "White Color Charge"); 
+            
+            GameRegistry.registerItem(colorCharge1, "colorCharge1");
+            LanguageRegistry.addName(colorCharge1, "Orange Color Charge"); 
+            
+            GameRegistry.registerItem(colorCharge2, "colorCharge2");
+            LanguageRegistry.addName(colorCharge2, "Magenta Color Charge"); 
+            
+            GameRegistry.registerItem(colorCharge3, "colorCharge3");
+            LanguageRegistry.addName(colorCharge3, "Light Blue Color Charge"); 
+            
+            GameRegistry.registerItem(colorCharge4, "colorCharge4");
+            LanguageRegistry.addName(colorCharge4, "Yellow Color Charge"); 
+            
+            GameRegistry.registerItem(colorCharge5, "colorCharge5");
+            LanguageRegistry.addName(colorCharge5, "Lime Color Charge"); 
+            
+            GameRegistry.registerItem(colorCharge6, "colorCharge6");
+            LanguageRegistry.addName(colorCharge6, "Pink Color Charge"); 
+            
+            GameRegistry.registerItem(colorCharge7, "colorCharge7");
+            LanguageRegistry.addName(colorCharge7, "Dark Grey Color Charge"); 
+            
+            GameRegistry.registerItem(colorCharge8, "colorCharge8");
+            LanguageRegistry.addName(colorCharge8, "Cyan Color Charge"); 
+            
+            GameRegistry.registerItem(colorCharge9, "colorCharge9");
+            LanguageRegistry.addName(colorCharge9, "Purple Color Charge"); 
+            
+            GameRegistry.registerItem(colorCharge10, "colorCharge10");
+            LanguageRegistry.addName(colorCharge10, "Blue Color Charge"); 
+            
+            GameRegistry.registerItem(colorCharge11, "colorCharge11");
+            LanguageRegistry.addName(colorCharge11, "Brown Color Charge"); 
+            
+            GameRegistry.registerItem(colorCharge12, "colorCharge12");
+            LanguageRegistry.addName(colorCharge12, "Green Color Charge"); 
+            
+            GameRegistry.registerItem(colorCharge13, "colorCharge13");
+            LanguageRegistry.addName(colorCharge13, "Red Color Charge"); 
+            
+            GameRegistry.registerItem(colorCharge14, "colorCharge14");
+            LanguageRegistry.addName(colorCharge14, "Black Color Charge"); 
+            
             
             // Colored Stone
             
@@ -192,21 +245,21 @@ public class fuzzcraft {
             }
             
             
-            ItemStack colorizorStack0 = new ItemStack(fuzzcraft.colorCharge, 64, 0);
-            ItemStack colorizorStack1 = new ItemStack(fuzzcraft.colorCharge, 64, 1);
-            ItemStack colorizorStack2 = new ItemStack(fuzzcraft.colorCharge, 64, 2);
-            ItemStack colorizorStack3 = new ItemStack(fuzzcraft.colorCharge, 64, 3);
-            ItemStack colorizorStack4 = new ItemStack(fuzzcraft.colorCharge, 64, 4);
-            ItemStack colorizorStack5 = new ItemStack(fuzzcraft.colorCharge, 64, 5);
-            ItemStack colorizorStack6 = new ItemStack(fuzzcraft.colorCharge, 64, 6);
-            ItemStack colorizorStack7 = new ItemStack(fuzzcraft.colorCharge, 64, 7);
-            ItemStack colorizorStack8 = new ItemStack(fuzzcraft.colorCharge, 64, 8);
-            ItemStack colorizorStack9 = new ItemStack(fuzzcraft.colorCharge, 64, 9);
-            ItemStack colorizorStack10 = new ItemStack(fuzzcraft.colorCharge, 64, 10);
-            ItemStack colorizorStack11 = new ItemStack(fuzzcraft.colorCharge, 64, 11);
-            ItemStack colorizorStack12 = new ItemStack(fuzzcraft.colorCharge, 64, 12);
-            ItemStack colorizorStack13 = new ItemStack(fuzzcraft.colorCharge, 64, 13);
-            ItemStack colorizorStack14 = new ItemStack(fuzzcraft.colorCharge, 64, 14); 
+            ItemStack colorizorStack0 = new ItemStack(fuzzcraft.colorCharge0, 64);
+            ItemStack colorizorStack1 = new ItemStack(fuzzcraft.colorCharge1, 64);
+            ItemStack colorizorStack2 = new ItemStack(fuzzcraft.colorCharge2, 64);
+            ItemStack colorizorStack3 = new ItemStack(fuzzcraft.colorCharge3, 64);
+            ItemStack colorizorStack4 = new ItemStack(fuzzcraft.colorCharge4, 64);
+            ItemStack colorizorStack5 = new ItemStack(fuzzcraft.colorCharge5, 64);
+            ItemStack colorizorStack6 = new ItemStack(fuzzcraft.colorCharge6, 64);
+            ItemStack colorizorStack7 = new ItemStack(fuzzcraft.colorCharge7, 64);
+            ItemStack colorizorStack8 = new ItemStack(fuzzcraft.colorCharge8, 64);
+            ItemStack colorizorStack9 = new ItemStack(fuzzcraft.colorCharge9, 64);
+            ItemStack colorizorStack10 = new ItemStack(fuzzcraft.colorCharge10, 64);
+            ItemStack colorizorStack11 = new ItemStack(fuzzcraft.colorCharge11, 64);
+            ItemStack colorizorStack12 = new ItemStack(fuzzcraft.colorCharge12, 64);
+            ItemStack colorizorStack13 = new ItemStack(fuzzcraft.colorCharge13, 64);
+            ItemStack colorizorStack14 = new ItemStack(fuzzcraft.colorCharge14, 64); 
             
             GameRegistry.addShapelessRecipe(new ItemStack(fuzzcraft.stoneBlock, 1, 0), stoneStack, colorizorStack0);
             GameRegistry.addShapelessRecipe(new ItemStack(fuzzcraft.stoneBlock, 1, 1), stoneStack, colorizorStack1);
