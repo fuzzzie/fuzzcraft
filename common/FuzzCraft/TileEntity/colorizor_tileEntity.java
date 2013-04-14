@@ -11,16 +11,20 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraftforge.common.ForgeDirection;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import FuzzCraft.Base.fuzzcraft;
-import FuzzCraft.Items.*;
+
 
 public class colorizor_tileEntity extends TileEntity implements IInventory, ISidedInventory
 {
 private ItemStack[] furnaceItemStacks = new ItemStack[3];
+
+private String field_94130_e;
+private static final int[] field_102011_e = new int[] {2, 1};
+private static final int[] field_102010_d = new int[] {0};
+private static final int[] field_102009_f = new int[] {1};
 
 public int furnaceBurnTime = 0;
 
@@ -319,39 +323,38 @@ public int getStartInventorySide(ForgeDirection side)
 }*/
 
 @Override
-public boolean func_102007_a(int i, ItemStack itemstack, int j) {
-    // TODO Auto-generated method stub
-    return false;
+public boolean func_102007_a(int par1, ItemStack par2ItemStack, int par3)
+{
+    return this.isStackValidForSlot(par1, par2ItemStack);
+}
+
+public boolean func_102008_b(int par1, ItemStack par2ItemStack, int par3)
+{
+    return par3 != 0 || par1 != 1 || par2ItemStack.itemID == Item.bucketEmpty.itemID;
 }
 
 @Override
-public boolean func_102008_b(int i, ItemStack itemstack, int j) {
-    // TODO Auto-generated method stub
-    return false;
+public boolean isInvNameLocalized()
+{
+    return this.field_94130_e != null && this.field_94130_e.length() > 0;
 }
 
 @Override
-public boolean isInvNameLocalized() {
-    // TODO Auto-generated method stub
-    return false;
+public boolean isUseableByPlayer(EntityPlayer par1EntityPlayer)
+{
+    return this.worldObj.getBlockTileEntity(this.xCoord, this.yCoord, this.zCoord) != this ? false : par1EntityPlayer.getDistanceSq((double)this.xCoord + 0.5D, (double)this.yCoord + 0.5D, (double)this.zCoord + 0.5D) <= 64.0D;
 }
 
 @Override
-public boolean isUseableByPlayer(EntityPlayer entityplayer) {
-    // TODO Auto-generated method stub
-    return true;
+public boolean isStackValidForSlot(int par1, ItemStack par2ItemStack)
+{
+    return par1 == 2 ? false : (par1 == 1 ? isItemFuel(par2ItemStack) : true);
 }
 
 @Override
-public boolean isStackValidForSlot(int i, ItemStack itemstack) {
-    // TODO Auto-generated method stub
-    return true;
-}
-
-@Override
-public int[] getSizeInventorySide(int var1) {
-    // TODO Auto-generated method stub
-    return null;
+public int[] getSizeInventorySide(int par1)
+{
+    return par1 == 0 ? field_102011_e : (par1 == 1 ? field_102010_d : field_102009_f);
 }
 }
 
