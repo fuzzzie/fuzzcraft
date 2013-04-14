@@ -6,6 +6,8 @@ import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.Icon;
+import net.minecraft.util.MathHelper;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -15,21 +17,24 @@ public class ColorCharge extends Item {
         super(id);
         this.setUnlocalizedName("colorcharge");
         this.setCreativeTab(CreativeTabs.tabMaterials);
-        this.itemID(id);
         this.setMaxStackSize(16);
     }
-
-    private void itemID(int id) {
-        return;
-    }
+ 
+    protected Icon[] icon = new Icon[15];
 
     @Override
     @SideOnly(Side.CLIENT)
-    public void updateIcons(IconRegister icon) {
+    public void updateIcons(IconRegister par1IconRegister) {
         for (int i = 0; i < 15; i++) {
-            iconIndex = icon.registerIcon("rpworldgen:charge_" + i);
+            icon[i] = par1IconRegister.registerIcon("FuzzCraft:charge_" + i);
         }
  }
+    
+    public Icon getIconFromDamage(int par1)
+    {
+        int j = MathHelper.clamp_int(par1, 0, 14);
+        return this.icon[j];
+    }
     
     public final static String[] colorChargeNames = {
         "White Charge",
