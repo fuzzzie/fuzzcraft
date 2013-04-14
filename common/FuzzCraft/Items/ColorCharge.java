@@ -16,7 +16,6 @@ public class ColorCharge extends Item {
         this.setUnlocalizedName("colorcharge");
         this.setCreativeTab(CreativeTabs.tabMaterials);
         this.itemID(id);
-        this.setMaxDamage(64); 
         this.setMaxStackSize(16);
     }
 
