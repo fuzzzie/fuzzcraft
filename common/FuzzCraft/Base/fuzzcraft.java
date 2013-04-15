@@ -14,8 +14,8 @@ import FuzzCraft.Blocks.Colorizor;
 import FuzzCraft.Blocks.RepulsionBlock;
 import FuzzCraft.Blocks.StoneBlock;
 import FuzzCraft.Blocks.StoneBlockItem;
-import FuzzCraft.Blocks.ZombieESpawner;
-import FuzzCraft.Handlers.Colorizor_Handler;
+import FuzzCraft.Blocks.EnhancedSpawner;
+import FuzzCraft.Handlers.GUI_Handler;
 import FuzzCraft.Items.ColorCharge;
 import cpw.mods.fml.common.FMLLog;
 import cpw.mods.fml.common.Mod;
@@ -45,7 +45,7 @@ public class fuzzcraft {
     public static boolean spawnerEmit = true;
     
 
-    private Colorizor_Handler guiHandler = new Colorizor_Handler();
+    private GUI_Handler guiHandler = new GUI_Handler();
 
     public static ColorCharge colorCharge;
 
@@ -54,8 +54,8 @@ public class fuzzcraft {
     public static ChisBrickBlock chisbrickBlock;
     public static Colorizor colorizorBlock;
     public static RepulsionBlock repulsionBlock;
-    public static ZombieESpawner zombieespawnerBlockI;
-    public static ZombieESpawner zombieespawnerBlockA;
+    public static EnhancedSpawner enhancedspawnerBlockI;
+    public static EnhancedSpawner enhancedspawnerBlockA;
 
     @Instance("fuzzcraft")
     public static fuzzcraft instance;
@@ -66,8 +66,7 @@ public class fuzzcraft {
     @PreInit
     public void preInit(FMLPreInitializationEvent event) {
 
-        Configuration fc_config = new Configuration(
-                event.getSuggestedConfigurationFile());
+        Configuration fc_config = new Configuration(event.getSuggestedConfigurationFile());
 
         try {
             fc_config.load();
@@ -83,8 +82,7 @@ public class fuzzcraft {
 
             itemIdCharge = fc_config.getItem("ID.White_Charge", 10000);
 
-            Property rP = fc_config.get(Configuration.CATEGORY_GENERAL,
-                    "repulsion_power", 15);
+            Property rP = fc_config.get(Configuration.CATEGORY_GENERAL, "repulsion_power", 15);
             rP.comment = "Set the power of Repulsion Blocks (Between 1 - 30, Default 15)";
             repulsorPower = rP.getInt();
 
@@ -94,8 +92,7 @@ public class fuzzcraft {
                 repulsorPower = 30;
             }
             
-            Property sE = fc_config.get(Configuration.CATEGORY_GENERAL,
-                    "SpawnersEmitLight", 1);
+            Property sE = fc_config.get(Configuration.CATEGORY_GENERAL, "SpawnersEmitLight", 1);
             sE.comment = "Mob Spawners Emit Light (1 = True, 0 = False";
             seConfig = sE.getInt();
             
@@ -129,8 +126,8 @@ public class fuzzcraft {
         chisbrickBlock = new ChisBrickBlock(blockIdChisBrick.getInt());
         colorizorBlock = new Colorizor(blockIdColorizor.getInt());
         repulsionBlock = new RepulsionBlock(blockIdRep.getInt(), repulsorPower);
-        zombieespawnerBlockI = new ZombieESpawner(blockIdSpawnerI.getInt(), false, spawnerEmit);
-        zombieespawnerBlockA = new ZombieESpawner(blockIdSpawnerA.getInt(), true, spawnerEmit);
+        enhancedspawnerBlockI = new EnhancedSpawner(blockIdSpawnerI.getInt(), false, spawnerEmit);
+        enhancedspawnerBlockA = new EnhancedSpawner(blockIdSpawnerA.getInt(), true, spawnerEmit);
 
         // Init Items
         colorCharge = new ColorCharge(itemIdCharge.getInt());
@@ -147,17 +144,13 @@ public class fuzzcraft {
         GameRegistry.registerBlock(repulsionBlock, "repulsionBlock");
         MinecraftForge.setBlockHarvestLevel(repulsionBlock, "Pick", 0);
 
-        LanguageRegistry.addName(zombieespawnerBlockI,
-                "Enhanced Zombie Spawner");
-        GameRegistry
-                .registerBlock(zombieespawnerBlockI, "zombieespawnerBlockI");
-        MinecraftForge.setBlockHarvestLevel(zombieespawnerBlockI, "Pick", 3);
+        LanguageRegistry.addName(enhancedspawnerBlockI, "Enhanced Zombie Spawner");
+        GameRegistry.registerBlock(enhancedspawnerBlockI, "zombieespawnerBlockI");
+        MinecraftForge.setBlockHarvestLevel(enhancedspawnerBlockI, "Pick", 3);
 
-        LanguageRegistry.addName(zombieespawnerBlockA,
-                "Enhanced Zombie Spawner");
-        GameRegistry
-                .registerBlock(zombieespawnerBlockA, "zombieespawnerBlockA");
-        MinecraftForge.setBlockHarvestLevel(zombieespawnerBlockA, "Pick", 3);
+        LanguageRegistry.addName(enhancedspawnerBlockA, "Enhanced Zombie Spawner");
+        GameRegistry.registerBlock(enhancedspawnerBlockA, "zombieespawnerBlockA");
+        MinecraftForge.setBlockHarvestLevel(enhancedspawnerBlockA, "Pick", 3);
 
         // Color Charges
         GameRegistry.registerItem(colorCharge, "colorCharge0");

@@ -5,7 +5,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 import cpw.mods.fml.common.network.IGuiHandler;
 
-public class Colorizor_Handler implements IGuiHandler {
+public class GUI_Handler implements IGuiHandler {
 
     @Override
     public Object getServerGuiElement(int id, EntityPlayer player, World world,
@@ -19,8 +19,7 @@ public class Colorizor_Handler implements IGuiHandler {
                 return new FuzzCraft.Containers.Colorizor_Container(
                         player.inventory,
                         (FuzzCraft.TileEntity.colorizor_tileEntity) tile_entity);
-
-        }
+            }
         return null;
     }
 
@@ -33,9 +32,12 @@ public class Colorizor_Handler implements IGuiHandler {
         switch (id) {
 
             case 0:
-                return new FuzzCraft.GUI.colorizor_gui(player.inventory,
+                return new FuzzCraft.GUI.ColorizorGUI(player.inventory,
                         (FuzzCraft.TileEntity.colorizor_tileEntity) tile_entity);
-
+                
+            case 1:
+                return new FuzzCraft.GUI.EnhancedSpawnerGUI(player);
+//           
         }
 
         return null;

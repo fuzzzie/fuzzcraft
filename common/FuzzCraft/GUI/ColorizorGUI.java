@@ -6,11 +6,11 @@ import net.minecraft.util.StatCollector;
 
 import org.lwjgl.opengl.GL11;
 
-public class colorizor_gui extends GuiContainer {
+public class ColorizorGUI extends GuiContainer {
 
     private FuzzCraft.TileEntity.colorizor_tileEntity furnaceInventory;
 
-    public colorizor_gui(InventoryPlayer par1InventoryPlayer,
+    public ColorizorGUI(InventoryPlayer par1InventoryPlayer,
             FuzzCraft.TileEntity.colorizor_tileEntity par2TileEntityFurnace) {
         super(new FuzzCraft.Containers.Colorizor_Container(par1InventoryPlayer,
                 par2TileEntityFurnace));
