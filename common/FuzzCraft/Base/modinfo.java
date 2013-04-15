@@ -1,6 +1,5 @@
 package FuzzCraft.Base;
 
-
 public class modinfo {
     public static final String MOD_ID = "fuzzcraft";
     public static final String MOD_NAME = "FuzzCraft";
