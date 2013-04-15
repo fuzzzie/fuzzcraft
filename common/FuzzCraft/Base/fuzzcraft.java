@@ -37,7 +37,7 @@ import cpw.mods.fml.common.registry.LanguageRegistry;
 public class fuzzcraft {
 
     private static Property blockIdStone, blockIdBrick, blockIdChisBrick,
-            blockIdColorizor, blockIdRep, blockIdSpawnerI, blockIdSpawnerA,
+            blockIdColorizorI, blockIdColorizorA, blockIdRep, blockIdSpawnerI, blockIdSpawnerA,
             itemIdCharge;
 
     public static int repulsorPower = 15;
@@ -52,7 +52,8 @@ public class fuzzcraft {
     public static StoneBlock stoneBlock;
     public static BrickBlock brickBlock;
     public static ChisBrickBlock chisbrickBlock;
-    public static Colorizor colorizorBlock;
+    public static Colorizor colorizorBlockA;
+    public static Colorizor colorizorBlockI;
     public static RepulsionBlock repulsionBlock;
     public static EnhancedSpawner enhancedspawnerBlockI;
     public static EnhancedSpawner enhancedspawnerBlockA;
@@ -72,9 +73,10 @@ public class fuzzcraft {
             fc_config.load();
 
             blockIdStone = fc_config.getBlock("ID.Stone", 1500);
+            blockIdColorizorI = fc_config.getBlock("Id.Colorizor_Inactive", 1501);
             blockIdBrick = fc_config.getBlock("ID.Brick", 1502);
             blockIdChisBrick = fc_config.getBlock("ID.Chiseled_Brick", 1503);
-            blockIdColorizor = fc_config.getBlock("ID.Colorizor", 1504);
+            blockIdColorizorA = fc_config.getBlock("ID.Colorizor_Active", 1504);
             blockIdRep = fc_config.getBlock("ID.Repulsor_Block", 1505);
 
             blockIdSpawnerI = fc_config.getBlock("ID.Spawner", 1506);
@@ -124,7 +126,8 @@ public class fuzzcraft {
         stoneBlock = new StoneBlock(blockIdStone.getInt());
         brickBlock = new BrickBlock(blockIdBrick.getInt());
         chisbrickBlock = new ChisBrickBlock(blockIdChisBrick.getInt());
-        colorizorBlock = new Colorizor(blockIdColorizor.getInt());
+        colorizorBlockI = new Colorizor(blockIdColorizorI.getInt(), false);
+        colorizorBlockA = new Colorizor(blockIdColorizorA.getInt(), true);
         repulsionBlock = new RepulsionBlock(blockIdRep.getInt(), repulsorPower);
         enhancedspawnerBlockI = new EnhancedSpawner(blockIdSpawnerI.getInt(), false, spawnerEmit);
         enhancedspawnerBlockA = new EnhancedSpawner(blockIdSpawnerA.getInt(), true, spawnerEmit);
@@ -136,10 +139,14 @@ public class fuzzcraft {
 
         // Standard Blocks
 
-        LanguageRegistry.addName(colorizorBlock, "Colorizor");
-        GameRegistry.registerBlock(colorizorBlock, "colorizor");
-        MinecraftForge.setBlockHarvestLevel(colorizorBlock, "Pick", 3);
+        LanguageRegistry.addName(colorizorBlockI, "Colorizor");
+        GameRegistry.registerBlock(colorizorBlockI, "colorizorI");
+        MinecraftForge.setBlockHarvestLevel(colorizorBlockI, "Pick", 3);
 
+        LanguageRegistry.addName(colorizorBlockA, "Colorizor");
+        GameRegistry.registerBlock(colorizorBlockA, "colorizorA");
+        MinecraftForge.setBlockHarvestLevel(colorizorBlockA, "Pick", 3);
+        
         LanguageRegistry.addName(repulsionBlock, "Repulsion Block");
         GameRegistry.registerBlock(repulsionBlock, "repulsionBlock");
         MinecraftForge.setBlockHarvestLevel(repulsionBlock, "Pick", 0);
