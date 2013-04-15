@@ -15,15 +15,18 @@ import cpw.mods.fml.relauncher.SideOnly;
 public class ZombieESpawner extends Block {
 
     private final boolean powered;
-    final int spawnRate = 200;
+    private final int spawnRate = 50;
     
-    public ZombieESpawner(int id, boolean par2) {
+    
+    public ZombieESpawner(int id, boolean par2, boolean par3) {
         super(id, Material.iron);
-        this.setTickRandomly(true);
-        powered = par2;
         this.setCreativeTab(CreativeTabs.tabMisc);
-        if (par2) {
-            this.setLightValue(1.0F);
+        this.setTickRandomly(true);        
+        powered = par2;
+        if (par3){
+            if (par2) {
+                this.setLightValue(1.0F);
+            }
         }
     }
 
@@ -42,17 +45,15 @@ public class ZombieESpawner extends Block {
         if (!world.isRemote) {
             if (powered && !world.isBlockIndirectlyGettingPowered(x, y, z)) {
                 world.scheduleBlockUpdate(x, y, z, blockID, 4);
-            } else if (!powered
-                    && world.isBlockIndirectlyGettingPowered(x, y, z)) {
-                world.setBlock(x, y, z, fuzzcraft.zombieespawnerBlockA.blockID,
-                        0, 2);
+            } else if (!powered && world.isBlockIndirectlyGettingPowered(x, y, z)) {
+                world.setBlock(x, y, z, fuzzcraft.zombieespawnerBlockA.blockID, 0, 2);
             }
         }
     }
 
     @Override
     public void onNeighborBlockChange(World world, int x, int y, int z, int nID) {
-        if (!world.isRemote) {
+      if (!world.isRemote) {
             if (powered && !world.isBlockIndirectlyGettingPowered(x, y, z)) { 
                 
                 world.scheduleBlockUpdate(x, y, z, blockID, 4);
@@ -66,6 +67,7 @@ public class ZombieESpawner extends Block {
                 world.spawnEntityInWorld(entityzombie);
                 entityzombie.spawnExplosionParticle();
 
+                world.scheduleBlockUpdate(x, y, z, fuzzcraft.zombieespawnerBlockA.blockID, spawnRate);
             }
         }
     }
@@ -83,9 +85,11 @@ public class ZombieESpawner extends Block {
             world.setBlock(x, y, z, fuzzcraft.zombieespawnerBlockI.blockID, 0, 2);
         } 
         if (!world.isRemote && powered && world.isBlockIndirectlyGettingPowered(x, y, z)) {
-         
+            
+            world.scheduleBlockUpdate(x, y, z, fuzzcraft.zombieespawnerBlockA.blockID, spawnRate);
+            
             EntityZombie entityzombie = new EntityZombie(world);
-            entityzombie.setLocationAndAngles(x + 1.5D, y, z + 1.5D, 0.0F, 0.0F);
+            entityzombie.setLocationAndAngles(x + rand.nextInt(3), y, z + rand.nextInt(3), 0.0F, 0.0F);
             world.spawnEntityInWorld(entityzombie);
             entityzombie.spawnExplosionParticle();
         }

@@ -41,6 +41,9 @@ public class fuzzcraft {
             itemIdCharge;
 
     public static int repulsorPower = 15;
+    public static int seConfig = 1 ;
+    public static boolean spawnerEmit = true;
+    
 
     private Colorizor_Handler guiHandler = new Colorizor_Handler();
 
@@ -90,6 +93,21 @@ public class fuzzcraft {
             } else if (repulsorPower > 30) {
                 repulsorPower = 30;
             }
+            
+            Property sE = fc_config.get(Configuration.CATEGORY_GENERAL,
+                    "SpawnersEmitLight", 1);
+            sE.comment = "Mob Spawners Emit Light (1 = True, 0 = False";
+            seConfig = sE.getInt();
+            
+            if (seConfig == 1) {
+                spawnerEmit = true; }
+            else if (seConfig == 0) {
+                spawnerEmit = false;}
+            else if (seConfig > 1) {
+                spawnerEmit = false;
+            }
+            
+            
         } catch (Exception e) {
             FMLLog.log(Level.SEVERE, e,
                     "Error loading FuzzCraft configuration file!");
@@ -111,10 +129,8 @@ public class fuzzcraft {
         chisbrickBlock = new ChisBrickBlock(blockIdChisBrick.getInt());
         colorizorBlock = new Colorizor(blockIdColorizor.getInt());
         repulsionBlock = new RepulsionBlock(blockIdRep.getInt(), repulsorPower);
-        zombieespawnerBlockI = new ZombieESpawner(blockIdSpawnerI.getInt(),
-                false);
-        zombieespawnerBlockA = new ZombieESpawner(blockIdSpawnerA.getInt(),
-                true);
+        zombieespawnerBlockI = new ZombieESpawner(blockIdSpawnerI.getInt(), false, spawnerEmit);
+        zombieespawnerBlockA = new ZombieESpawner(blockIdSpawnerA.getInt(), true, spawnerEmit);
 
         // Init Items
         colorCharge = new ColorCharge(itemIdCharge.getInt());
