@@ -1,6 +1,6 @@
 package FuzzCraft.Client;
 
-   import FuzzCraft.Base.CommonProxy;
+import FuzzCraft.Base.CommonProxy;
 
-    public class ClientProxy extends CommonProxy {          
-    }
+public class ClientProxy extends CommonProxy {
+}
