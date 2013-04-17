@@ -23,7 +23,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 public class EnhancedSpawner extends Block {
 
     private final boolean powered;
-    private final int spawnRate = 50;
+    private int spawnRate;
     
     private int mobIndex;
     
@@ -79,7 +79,16 @@ public class EnhancedSpawner extends Block {
                 world.setBlock(x, y, z, fuzzcraft.enhancedspawnerBlockA.blockID, 0, 2);
                 
                 mobIndex = FuzzCraft.GUI.EnhancedSpawnerGUI.mobIndex;
+                int spawn = FuzzCraft.GUI.EnhancedSpawnerGUI.spawnRate;
 
+                if (spawn == 0) {
+                    spawnRate = 200;
+                } else if (spawn == 1){
+                    spawnRate = 100;
+                } else if (spawn == 2){
+                    spawnRate = 50;
+                }
+                
                 if (mobIndex == 0) {
                     
                     EntityZombie entityzombie = new EntityZombie(world);
@@ -168,6 +177,15 @@ public class EnhancedSpawner extends Block {
             world.scheduleBlockUpdate(x, y, z, fuzzcraft.enhancedspawnerBlockA.blockID, spawnRate);
     
             mobIndex = FuzzCraft.GUI.EnhancedSpawnerGUI.mobIndex;
+            int spawn = FuzzCraft.GUI.EnhancedSpawnerGUI.spawnRate;
+
+            if (spawn == 0) {
+                spawnRate = 200;
+            } else if (spawn == 1){
+                spawnRate = 100;
+            } else if (spawn == 2){
+                spawnRate = 50;
+            }
             
             if (mobIndex == 0) {
             
