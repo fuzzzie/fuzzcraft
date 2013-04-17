@@ -3,7 +3,6 @@ package FuzzCraft.TileEntity;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
@@ -305,7 +304,7 @@ public class colorizor_tileEntity extends TileEntity implements ISidedInventory,
             if (flag != this.furnaceBurnTime > 0)
             {
                 flag1 = true;
-                fuzzcraft.colorizorBlockA.updateFurnaceBlockState(this.furnaceBurnTime > 0, this.worldObj, this.xCoord, this.yCoord, this.zCoord);
+//                fuzzcraft.colorizorBlockA.updateFurnaceBlockState(this.furnaceBurnTime > 0, this.worldObj, this.xCoord, this.yCoord, this.zCoord);
             }
         }
 

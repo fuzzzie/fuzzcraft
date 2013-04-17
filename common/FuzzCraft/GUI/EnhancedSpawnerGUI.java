@@ -9,15 +9,16 @@ import org.lwjgl.opengl.GL11;
 public class EnhancedSpawnerGUI extends GuiScreen {
     
     
+
     public final int xSizeOfTexture = 176;
     public final int ySizeOfTexture = 88;
     
     
     public String[] mobs = new String[]{"Spawning Zombies", "Spawning Skeletons", "Spawning Creepers", "Spawning Endermen",
-            "Spawning Spiders", "Spawning Cave Spiders", "Spawning Wither Skeletons"};
-    public int mobIndex = 0;
+            "Spawning Spiders", "Spawning Cave Spiders", "Spawning Slimes"};
+    public static int mobIndex = 0;
 
-    
+
     public EnhancedSpawnerGUI(EntityPlayer player){
 
 
@@ -32,7 +33,7 @@ public class EnhancedSpawnerGUI extends GuiScreen {
         int posY = (this.height - ySizeOfTexture) / 2;
 
         drawTexturedModalRect(posX, posY, 0, 0, xSizeOfTexture, ySizeOfTexture);  
-        drawString(fontRenderer, mobs[mobIndex], posX+20, posY+20, 0x000000);
+        drawString(fontRenderer, mobs[mobIndex], posX+30, posY+20, 0x000000);
         
  //   drawDefaultBackground();
 
@@ -59,6 +60,8 @@ public class EnhancedSpawnerGUI extends GuiScreen {
             case 0: if(mobIndex < mobs.length-1)
             {
                 mobIndex += 1;
+                return;
+                
             }else
             {
                 mobIndex = 0;
@@ -66,6 +69,11 @@ public class EnhancedSpawnerGUI extends GuiScreen {
             break;
             default:
         }
+        
+    }
+    
+    public static int getMob() {
+        return mobIndex;
     }
     
 }

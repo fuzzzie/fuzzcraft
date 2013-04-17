@@ -10,13 +10,12 @@ import FuzzCraft.Blocks.BrickBlock;
 import FuzzCraft.Blocks.BrickBlockItem;
 import FuzzCraft.Blocks.ChisBrickBlock;
 import FuzzCraft.Blocks.ChisBrickBlockItem;
-import FuzzCraft.Blocks.Colorizor;
+//import FuzzCraft.Blocks.Colorizor;
 import FuzzCraft.Blocks.RepulsionBlock;
 import FuzzCraft.Blocks.StoneBlock;
 import FuzzCraft.Blocks.StoneBlockItem;
 import FuzzCraft.Blocks.EnhancedSpawner;
 import FuzzCraft.Handlers.GUI_Handler;
-import FuzzCraft.Items.ColorCharge;
 import cpw.mods.fml.common.FMLLog;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.Init;
@@ -37,23 +36,22 @@ import cpw.mods.fml.common.registry.LanguageRegistry;
 public class fuzzcraft {
 
     private static Property blockIdStone, blockIdBrick, blockIdChisBrick,
-            blockIdColorizorI, blockIdColorizorA, blockIdRep, blockIdSpawnerI, blockIdSpawnerA,
-            itemIdCharge;
+            blockIdRep, blockIdSpawnerI, blockIdSpawnerA;
+
+    
+//    private staic Property blockIdColorizorI, blockIdColorizorA;
 
     public static int repulsorPower = 15;
     public static int seConfig = 1 ;
     public static boolean spawnerEmit = true;
-    
-
+ 
     private GUI_Handler guiHandler = new GUI_Handler();
-
-    public static ColorCharge colorCharge;
 
     public static StoneBlock stoneBlock;
     public static BrickBlock brickBlock;
     public static ChisBrickBlock chisbrickBlock;
-    public static Colorizor colorizorBlockA;
-    public static Colorizor colorizorBlockI;
+//    public static Colorizor colorizorBlockA;
+//    public static Colorizor colorizorBlockI;
     public static RepulsionBlock repulsionBlock;
     public static EnhancedSpawner enhancedspawnerBlockI;
     public static EnhancedSpawner enhancedspawnerBlockA;
@@ -73,17 +71,15 @@ public class fuzzcraft {
             fc_config.load();
 
             blockIdStone = fc_config.getBlock("ID.Stone", 1500);
-            blockIdColorizorI = fc_config.getBlock("Id.Colorizor_Inactive", 1501);
             blockIdBrick = fc_config.getBlock("ID.Brick", 1502);
             blockIdChisBrick = fc_config.getBlock("ID.Chiseled_Brick", 1503);
-            blockIdColorizorA = fc_config.getBlock("ID.Colorizor_Active", 1504);
+//            blockIdColorizorA = fc_config.getBlock("ID.Colorizor_Active", 1504);
+//            blockIdColorizorI = fc_config.getBlock("Id.Colorizor_Inactive", 1501);
             blockIdRep = fc_config.getBlock("ID.Repulsor_Block", 1505);
 
             blockIdSpawnerI = fc_config.getBlock("ID.Spawner", 1506);
             blockIdSpawnerA = fc_config.getBlock("ID.ActiveSpawner", 1507);
-
-            itemIdCharge = fc_config.getItem("ID.White_Charge", 10000);
-
+         
             Property rP = fc_config.get(Configuration.CATEGORY_GENERAL, "repulsion_power", 15);
             rP.comment = "Set the power of Repulsion Blocks (Between 1 - 30, Default 15)";
             repulsorPower = rP.getInt();
@@ -126,26 +122,26 @@ public class fuzzcraft {
         stoneBlock = new StoneBlock(blockIdStone.getInt());
         brickBlock = new BrickBlock(blockIdBrick.getInt());
         chisbrickBlock = new ChisBrickBlock(blockIdChisBrick.getInt());
-        colorizorBlockI = new Colorizor(blockIdColorizorI.getInt(), false);
-        colorizorBlockA = new Colorizor(blockIdColorizorA.getInt(), true);
+//        colorizorBlockI = new Colorizor(blockIdColorizorI.getInt(), false);
+//        colorizorBlockA = new Colorizor(blockIdColorizorA.getInt(), true);
         repulsionBlock = new RepulsionBlock(blockIdRep.getInt(), repulsorPower);
         enhancedspawnerBlockI = new EnhancedSpawner(blockIdSpawnerI.getInt(), false, spawnerEmit);
         enhancedspawnerBlockA = new EnhancedSpawner(blockIdSpawnerA.getInt(), true, spawnerEmit);
 
         // Init Items
-        colorCharge = new ColorCharge(itemIdCharge.getInt());
+
 
         // Register Blocks //
 
         // Standard Blocks
 
-        LanguageRegistry.addName(colorizorBlockI, "Colorizor");
-        GameRegistry.registerBlock(colorizorBlockI, "colorizorI");
-        MinecraftForge.setBlockHarvestLevel(colorizorBlockI, "Pick", 3);
+//        LanguageRegistry.addName(colorizorBlockI, "Colorizor");
+//        GameRegistry.registerBlock(colorizorBlockI, "colorizorI");
+//        MinecraftForge.setBlockHarvestLevel(colorizorBlockI, "Pick", 3);
 
-        LanguageRegistry.addName(colorizorBlockA, "Colorizor");
-        GameRegistry.registerBlock(colorizorBlockA, "colorizorA");
-        MinecraftForge.setBlockHarvestLevel(colorizorBlockA, "Pick", 3);
+//        LanguageRegistry.addName(colorizorBlockA, "Colorizor");
+//        GameRegistry.registerBlock(colorizorBlockA, "colorizorA");
+//        MinecraftForge.setBlockHarvestLevel(colorizorBlockA, "Pick", 3);
         
         LanguageRegistry.addName(repulsionBlock, "Repulsion Block");
         GameRegistry.registerBlock(repulsionBlock, "repulsionBlock");
@@ -158,15 +154,7 @@ public class fuzzcraft {
         LanguageRegistry.addName(enhancedspawnerBlockA, "Enhanced Zombie Spawner");
         GameRegistry.registerBlock(enhancedspawnerBlockA, "zombieespawnerBlockA");
         MinecraftForge.setBlockHarvestLevel(enhancedspawnerBlockA, "Pick", 3);
-
-        // Color Charges
-        GameRegistry.registerItem(colorCharge, "colorCharge0");
-
-        for (int i = 0; i < 15; i++) {
-            LanguageRegistry.addName(new ItemStack(colorCharge, 1, i),
-                    ColorCharge.colorChargeNames[i]);
-        }
-
+     
         // Colored Stone
 
         MinecraftForge.setBlockHarvestLevel(stoneBlock, "Pick", 0);

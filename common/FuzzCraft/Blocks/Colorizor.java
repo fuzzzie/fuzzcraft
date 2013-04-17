@@ -48,10 +48,10 @@ public class Colorizor extends BlockContainer {
         /**
          * Returns the ID of the items to drop on destruction.
          */
-        public int idDropped(int par1, Random rand, int par3)
-        {
-            return fuzzcraft.colorizorBlockI.blockID;
-        }
+  //      public int idDropped(int par1, Random rand, int par3)
+    //    {
+ //           return fuzzcraft.colorizorBlockI.blockID;
+  //      }
 
         /**
          * Called whenever the block is added into the world. Args: world, x, y, z
@@ -150,11 +150,11 @@ public class Colorizor extends BlockContainer {
 
             if (par0)
             {
-                world.setBlock(x, y, z, fuzzcraft.colorizorBlockA.blockID);
+      //          world.setBlock(x, y, z, fuzzcraft.colorizorBlockA.blockID);
             }
             else
             {
-                world.setBlock(x, y, z, fuzzcraft.colorizorBlockI.blockID);
+      //          world.setBlock(x, y, z, fuzzcraft.colorizorBlockI.blockID);
             }
 
             keepFurnaceInventory = false;

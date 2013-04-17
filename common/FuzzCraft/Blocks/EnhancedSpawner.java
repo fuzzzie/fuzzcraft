@@ -3,10 +3,15 @@ package FuzzCraft.Blocks;
 import java.util.Random;
 
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.entity.monster.EntityCaveSpider;
+import net.minecraft.entity.monster.EntityCreeper;
+import net.minecraft.entity.monster.EntityEnderman;
+import net.minecraft.entity.monster.EntitySkeleton;
+import net.minecraft.entity.monster.EntitySlime;
+import net.minecraft.entity.monster.EntitySpider;
 import net.minecraft.entity.monster.EntityZombie;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
@@ -19,6 +24,13 @@ public class EnhancedSpawner extends Block {
 
     private final boolean powered;
     private final int spawnRate = 50;
+    
+    private int mobIndex;
+    
+    public TileEntity createNewTileEntity(World world)
+    {
+        return new FuzzCraft.TileEntity.EnahncedSpawner_tileEntitiy();
+    }
     
     
     public EnhancedSpawner(int id, boolean par2, boolean par3) {
@@ -57,6 +69,7 @@ public class EnhancedSpawner extends Block {
     @Override
     public void onNeighborBlockChange(World world, int x, int y, int z, int nID) {
       if (!world.isRemote) {
+           
             if (powered && !world.isBlockIndirectlyGettingPowered(x, y, z)) { 
                 
                 world.scheduleBlockUpdate(x, y, z, blockID, 4);
@@ -64,16 +77,79 @@ public class EnhancedSpawner extends Block {
             } else if (!powered && world.isBlockIndirectlyGettingPowered(x, y, z)) {
                 
                 world.setBlock(x, y, z, fuzzcraft.enhancedspawnerBlockA.blockID, 0, 2);
+                
+                mobIndex = FuzzCraft.GUI.EnhancedSpawnerGUI.mobIndex;
 
-                EntityZombie entityzombie = new EntityZombie(world);
-                entityzombie.setLocationAndAngles(x + 1.5D, y, z + 1.5D, 0.0F, 0.0F);
-                world.spawnEntityInWorld(entityzombie);
-                entityzombie.spawnExplosionParticle();
+                if (mobIndex == 0) {
+                    
+                    EntityZombie entityzombie = new EntityZombie(world);
+                    entityzombie.setLocationAndAngles(x + 1.5D, y, z + 1.5D, 0.0F, 0.0F);
+                    world.spawnEntityInWorld(entityzombie);
+                    entityzombie.spawnExplosionParticle();
 
-                world.scheduleBlockUpdate(x, y, z, fuzzcraft.enhancedspawnerBlockA.blockID, spawnRate);
+                      world.scheduleBlockUpdate(x, y, z, fuzzcraft.enhancedspawnerBlockA.blockID, spawnRate);
+                }
+                else if (mobIndex == 1) {
+                
+                    EntitySkeleton entityskeleton = new EntitySkeleton(world);
+                    entityskeleton.setLocationAndAngles(x + 1.5D,  y,  z + 1.5D, 0.0F, 0.0F);
+                    world.spawnEntityInWorld(entityskeleton);
+                    entityskeleton.spawnExplosionParticle();
+                      
+                    world.scheduleBlockUpdate(x, y, z, fuzzcraft.enhancedspawnerBlockA.blockID, spawnRate);
+                }
+                else if (mobIndex == 2) {
+                    
+                    EntityCreeper entitycreeper = new EntityCreeper(world);
+                    entitycreeper.setLocationAndAngles(x + 1.5D, y, z + 1.5D,  0.0F,  0.0F);
+                    world.spawnEntityInWorld(entitycreeper);
+                    entitycreeper.spawnExplosionParticle();
+                    
+                    world.scheduleBlockUpdate(x, y, z, fuzzcraft.enhancedspawnerBlockA.blockID, spawnRate);
+                }
+               else if (mobIndex == 3) {
+                   
+                   EntityEnderman entityenderman = new EntityEnderman(world);
+                   entityenderman.setLocationAndAngles(x + 1.5D, y, z + 1.5D,  0.0F,  0.0F);
+                   world.spawnEntityInWorld(entityenderman);
+                   entityenderman.spawnExplosionParticle();
+                   
+                   world.scheduleBlockUpdate(x, y, z, fuzzcraft.enhancedspawnerBlockA.blockID, spawnRate);
+                   
+               }
+               else if (mobIndex == 4) {
+                   
+                   EntitySpider entityspider = new EntitySpider(world);
+                   entityspider.setLocationAndAngles(x + 1.5D, y, z + 1.5D,  0.0F,  0.0F);
+                   world.spawnEntityInWorld(entityspider);
+                   entityspider.spawnExplosionParticle();
+                   
+                   world.scheduleBlockUpdate(x, y, z, fuzzcraft.enhancedspawnerBlockA.blockID, spawnRate);
+               }
+               else if (mobIndex == 5) {
+                   
+                   EntityCaveSpider entitycavespider = new EntityCaveSpider(world);
+                   entitycavespider.setLocationAndAngles(x + 1.5D, y, z + 1.5D,  0.0F,  0.0F);
+                   world.spawnEntityInWorld(entitycavespider);
+                   entitycavespider.spawnExplosionParticle();
+                   
+                   world.scheduleBlockUpdate(x, y, z, fuzzcraft.enhancedspawnerBlockA.blockID, spawnRate);
+               }
+               else if (mobIndex == 6) {
+                   
+                   EntitySlime entityslime = new EntitySlime(world);
+                   entityslime.setLocationAndAngles(x + 1.5D, y, z + 1.5D,  0.0F,  0.0F);
+                   world.spawnEntityInWorld(entityslime);
+                   entityslime.spawnExplosionParticle();
+                   
+                   world.scheduleBlockUpdate(x, y, z, fuzzcraft.enhancedspawnerBlockA.blockID, spawnRate);
+               }
             }
-        }
-    }
+      }
+              
+    }              
+    
+    
     
     @Override
     public int tickRate(World world)
@@ -90,11 +166,72 @@ public class EnhancedSpawner extends Block {
         if (!world.isRemote && powered && world.isBlockIndirectlyGettingPowered(x, y, z)) {
             
             world.scheduleBlockUpdate(x, y, z, fuzzcraft.enhancedspawnerBlockA.blockID, spawnRate);
+    
+            mobIndex = FuzzCraft.GUI.EnhancedSpawnerGUI.mobIndex;
             
-            EntityZombie entityzombie = new EntityZombie(world);
-            entityzombie.setLocationAndAngles(x + rand.nextInt(3), y, z + rand.nextInt(3), 0.0F, 0.0F);
-            world.spawnEntityInWorld(entityzombie);
-            entityzombie.spawnExplosionParticle();
+            if (mobIndex == 0) {
+            
+                    EntityZombie entityzombie = new EntityZombie(world);
+                    entityzombie.setLocationAndAngles(x + 1.5D, y, z + 1.5D, 0.0F, 0.0F);
+                    world.spawnEntityInWorld(entityzombie);
+                    entityzombie.spawnExplosionParticle();
+
+                    world.scheduleBlockUpdate(x, y, z, fuzzcraft.enhancedspawnerBlockA.blockID, spawnRate);
+            }
+            else if (mobIndex == 1) {
+                
+                    EntitySkeleton entityskeleton = new EntitySkeleton(world);
+                    entityskeleton.setLocationAndAngles(x + 1.5D,  y,  z + 1.5D, 0.0F, 0.0F);
+                    world.spawnEntityInWorld(entityskeleton);
+                    entityskeleton.spawnExplosionParticle();
+                    
+                    world.scheduleBlockUpdate(x, y, z, fuzzcraft.enhancedspawnerBlockA.blockID, spawnRate);
+            }
+            else if (mobIndex == 2) {
+                
+                EntityCreeper entitycreeper = new EntityCreeper(world);
+                entitycreeper.setLocationAndAngles(x + 1.5D, y, z + 1.5D,  0.0F,  0.0F);
+                world.spawnEntityInWorld(entitycreeper);
+                entitycreeper.spawnExplosionParticle();
+                
+                world.scheduleBlockUpdate(x, y, z, fuzzcraft.enhancedspawnerBlockA.blockID, spawnRate);
+            }
+            else if (mobIndex == 3) {
+                
+                EntityEnderman entityenderman = new EntityEnderman(world);
+                entityenderman.setLocationAndAngles(x + 1.5D, y, z + 1.5D,  0.0F,  0.0F);
+                world.spawnEntityInWorld(entityenderman);
+                entityenderman.spawnExplosionParticle();
+                
+                world.scheduleBlockUpdate(x, y, z, fuzzcraft.enhancedspawnerBlockA.blockID, spawnRate);
+            }
+            else if (mobIndex == 4) {
+                
+                EntitySpider entityspider = new EntitySpider(world);
+                entityspider.setLocationAndAngles(x + 1.5D, y, z + 1.5D,  0.0F,  0.0F);
+                world.spawnEntityInWorld(entityspider);
+                entityspider.spawnExplosionParticle();
+                
+                world.scheduleBlockUpdate(x, y, z, fuzzcraft.enhancedspawnerBlockA.blockID, spawnRate);
+            }
+            else if (mobIndex == 5) {
+                
+                EntityCaveSpider entitycavespider = new EntityCaveSpider(world);
+                entitycavespider.setLocationAndAngles(x + 1.5D, y, z + 1.5D,  0.0F,  0.0F);
+                world.spawnEntityInWorld(entitycavespider);
+                entitycavespider.spawnExplosionParticle();
+                
+                world.scheduleBlockUpdate(x, y, z, fuzzcraft.enhancedspawnerBlockA.blockID, spawnRate);
+            }
+            else if (mobIndex == 6) {
+                
+                EntitySlime entityslime = new EntitySlime(world);
+                entityslime.setLocationAndAngles(x + 1.5D, y, z + 1.5D,  0.0F,  0.0F);
+                world.spawnEntityInWorld(entityslime);
+                entityslime.spawnExplosionParticle();
+                
+                world.scheduleBlockUpdate(x, y, z, fuzzcraft.enhancedspawnerBlockA.blockID, spawnRate);
+            }
         }
     }
 
