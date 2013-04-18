@@ -90,6 +90,7 @@ public class EnhancedSpawnerGUI extends GuiScreen {
      }
             
     public static int getMob() {
+        
         return mobIndex;
     }
 
