@@ -67,6 +67,7 @@ public class EnhancedSpawnerGUI extends GuiScreen {
             case 0: if(mobIndex < mobs.length - 1)
             {
                 mobIndex += 1;
+               
                 return;
             }else
             {

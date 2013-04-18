@@ -205,6 +205,7 @@ public class fuzzcraft {
         GameRegistry.registerTileEntity(
                 FuzzCraft.TileEntity.colorizor_tileEntity.class,
                 "colorizor_tileEntity");
+        GameRegistry.registerTileEntity(FuzzCraft.TileEntity.EnahncedSpawner_tileEntitiy.class, "enhancedspawner_tileentity");
 
     }
 

@@ -2,7 +2,7 @@ package FuzzCraft.Blocks;
 
 import java.util.Random;
 
-import net.minecraft.block.Block;
+import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
@@ -20,19 +20,12 @@ import FuzzCraft.Base.fuzzcraft;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class EnhancedSpawner extends Block {
+public class EnhancedSpawner extends BlockContainer {
 
     private final boolean powered;
     private int spawnRate;
-    
     private int mobIndex;
-    
-    public TileEntity createNewTileEntity(World world)
-    {
-        return new FuzzCraft.TileEntity.EnahncedSpawner_tileEntitiy();
-    }
-    
-    
+       
     public EnhancedSpawner(int id, boolean par2, boolean par3) {
         super(id, Material.iron);
         this.setCreativeTab(CreativeTabs.tabMisc);
@@ -65,6 +58,19 @@ public class EnhancedSpawner extends Block {
             }
         }
     }
+    
+    public TileEntity createNewTileEntity(World world)
+    {
+        try
+        {
+            return new FuzzCraft.TileEntity.EnahncedSpawner_tileEntitiy();
+        }
+        catch (Exception var3)
+        {
+            throw new RuntimeException(var3);
+        }
+        
+    }
 
     @Override
     public void onNeighborBlockChange(World world, int x, int y, int z, int nID) {
@@ -78,7 +84,7 @@ public class EnhancedSpawner extends Block {
                 
                 world.setBlock(x, y, z, fuzzcraft.enhancedspawnerBlockA.blockID, 0, 2);
                 
-                mobIndex = FuzzCraft.GUI.EnhancedSpawnerGUI.mobIndex;
+/*              mobIndex = FuzzCraft.GUI.EnhancedSpawnerGUI.mobIndex;
                 int spawn = FuzzCraft.GUI.EnhancedSpawnerGUI.spawnRate;
 
                 if (spawn == 0) {
@@ -87,7 +93,14 @@ public class EnhancedSpawner extends Block {
                     spawnRate = 100;
                 } else if (spawn == 2){
                     spawnRate = 50;
-                }
+                } 
+                
+                spawnRate = FuzzCraft.TileEntity.EnahncedSpawner_tileEntitiy.getSpawnRate();
+                mobIndex = FuzzCraft.TileEntity.EnahncedSpawner_tileEntitiy.getMobIndex(); */
+                
+                FuzzCraft.TileEntity.EnahncedSpawner_tileEntitiy t = (FuzzCraft.TileEntity.EnahncedSpawner_tileEntitiy) world.getBlockTileEntity(x, y, z);
+                t.spawnerData(world);
+                
                 
                 if (mobIndex == 0) {
                     
@@ -158,8 +171,6 @@ public class EnhancedSpawner extends Block {
               
     }              
     
-    
-    
     @Override
     public int tickRate(World world)
     {
@@ -176,7 +187,7 @@ public class EnhancedSpawner extends Block {
             
             world.scheduleBlockUpdate(x, y, z, fuzzcraft.enhancedspawnerBlockA.blockID, spawnRate);
     
-            mobIndex = FuzzCraft.GUI.EnhancedSpawnerGUI.mobIndex;
+/*            mobIndex = FuzzCraft.GUI.EnhancedSpawnerGUI.mobIndex;
             int spawn = FuzzCraft.GUI.EnhancedSpawnerGUI.spawnRate;
 
             if (spawn == 0) {
@@ -185,7 +196,14 @@ public class EnhancedSpawner extends Block {
                 spawnRate = 100;
             } else if (spawn == 2){
                 spawnRate = 50;
-            }
+            } 
+            
+            spawnRate = FuzzCraft.TileEntity.EnahncedSpawner_tileEntitiy.getSpawnRate();
+            mobIndex = FuzzCraft.TileEntity.EnahncedSpawner_tileEntitiy.getMobIndex(); */
+            
+            FuzzCraft.TileEntity.EnahncedSpawner_tileEntitiy t = (FuzzCraft.TileEntity.EnahncedSpawner_tileEntitiy) world.getBlockTileEntity(x, y, z);
+            t.spawnerData(world);
+            
             
             if (mobIndex == 0) {
             
@@ -252,10 +270,6 @@ public class EnhancedSpawner extends Block {
             }
         }
     }
-
-    public void scheduleBlockUpdate(int par1, int par2, int par3, int par4, int par5) {
-        
-    }
     
     @Override
     public int idDropped(int par1, Random rand, int par3) {
@@ -272,10 +286,25 @@ public class EnhancedSpawner extends Block {
     
     @Override
     public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int par6, float par7, float par8, float par9) {
+        TileEntity tile_entity = world.getBlockTileEntity(x, y, z);
+        
+        if (tile_entity == null || player.isSneaking()) {
 
-            player.openGui(fuzzcraft.instance, 1, world, x, y, z);
+            return false;
+        }
+        
+        FuzzCraft.TileEntity.EnahncedSpawner_tileEntitiy t = (FuzzCraft.TileEntity.EnahncedSpawner_tileEntitiy) world.getBlockTileEntity(x, y, z);
+        t.spawnerData(world);
+        
+        player.openGui(fuzzcraft.instance, 1, world, x, y, z);
+        
         
         return true;
    
-}
+    }
+    
+    public boolean hasTileEntity(int metadata)
+    {
+        return true;
+    }
 }
