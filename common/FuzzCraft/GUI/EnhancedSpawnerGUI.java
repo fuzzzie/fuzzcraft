@@ -4,17 +4,19 @@ import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.gui.GuiSmallButton;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.tileentity.TileEntity;
 
 
 import org.lwjgl.opengl.GL11;
 
+
+
 public class EnhancedSpawnerGUI extends GuiScreen {
     
-    
-
     public final int xSizeOfTexture = 176;
     public final int ySizeOfTexture = 88;
     
+
     
     public String[] mobs = new String[]{"Zombies", "Skeletons", "Creepers", "Endermen",
             "Spiders", "Cave Spiders", "Slimes"};
@@ -23,8 +25,7 @@ public class EnhancedSpawnerGUI extends GuiScreen {
     public static int spawnRate = 0;
 
 
-    public EnhancedSpawnerGUI(EntityPlayer player){
-
+    public EnhancedSpawnerGUI(EntityPlayer player) {
 
     }
     @Override
