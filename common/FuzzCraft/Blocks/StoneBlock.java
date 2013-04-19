@@ -42,6 +42,7 @@ public class StoneBlock extends Block {
         return icon[meta];
     }
 
+    @SuppressWarnings({ "rawtypes", "unchecked" })
     @Override
     @SideOnly(Side.CLIENT)
     public void getSubBlocks(int par1, CreativeTabs tab, List subItems) {

@@ -46,6 +46,7 @@ public class ChisBrickBlock extends Block {
         return icon[meta];
     }
 
+    @SuppressWarnings({ "unchecked", "rawtypes" })
     @Override
     @SideOnly(Side.CLIENT)
     public void getSubBlocks(int par1, CreativeTabs tab, List subItems) {

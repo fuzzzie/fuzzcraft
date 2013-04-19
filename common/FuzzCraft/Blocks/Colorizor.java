@@ -10,7 +10,6 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.inventory.Container;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
@@ -24,7 +23,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class Colorizor extends BlockContainer {
 
-    private Icon sides, bottom, top, front;
+//    private Icon sides, bottom, top, front;
     private final Random furnaceRand = new Random();
     private final boolean isActive;
     private static boolean keepFurnaceInventory = false;

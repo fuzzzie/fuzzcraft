@@ -12,7 +12,9 @@ public class Colorizor_Recipes
     private static final Colorizor_Recipes smeltingBase = new Colorizor_Recipes();
 
     /** The list of smelting results. */
+    @SuppressWarnings("rawtypes")
     private Map smeltingList = new HashMap();
+    @SuppressWarnings("rawtypes")
     private Map experienceList = new HashMap();
     private HashMap<List<Integer>, ItemStack> metaSmeltingList = new HashMap<List<Integer>, ItemStack>();
     private HashMap<List<Integer>, Float> metaExperience = new HashMap<List<Integer>, Float>();
@@ -34,6 +36,7 @@ public class Colorizor_Recipes
     /**
      * Adds a smelting recipe.
      */
+    @SuppressWarnings("unchecked")
     public void addSmelting(int par1, ItemStack par2ItemStack, float par3)
     {
         this.smeltingList.put(Integer.valueOf(par1), par2ItemStack);
@@ -50,6 +53,7 @@ public class Colorizor_Recipes
         return (ItemStack)this.smeltingList.get(Integer.valueOf(par1));
     }
 
+    @SuppressWarnings("rawtypes")
     public Map getSmeltingList()
     {
         return this.smeltingList;

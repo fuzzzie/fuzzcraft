@@ -15,11 +15,11 @@ import net.minecraft.nbt.NBTTagList;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.common.ForgeDirection;
 import net.minecraftforge.common.ForgeDummyContainer;
-import FuzzCraft.Base.fuzzcraft;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
+@SuppressWarnings("deprecation")
 public class colorizor_tileEntity extends TileEntity implements ISidedInventory, net.minecraftforge.common.ISidedInventory
 {
     private static final int[] field_102010_d = new int[] {0};

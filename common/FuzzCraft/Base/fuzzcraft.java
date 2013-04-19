@@ -2,6 +2,7 @@ package FuzzCraft.Base;
 
 import java.util.logging.Level;
 
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.Configuration;
 import net.minecraftforge.common.MinecraftForge;
@@ -117,6 +118,15 @@ public class fuzzcraft {
     public void load(FMLInitializationEvent event) {
 
         proxy.registerRenderers();
+        
+        // Init Creative Tab
+        
+        @SuppressWarnings("unused")
+        CreativeTabs FuzzCraftTab = new CreativeTabs("FuzzCraft") {
+            public ItemStack getIconItemStack() {
+                    return new ItemStack(fuzzcraft.repulsionBlock);
+            }
+    };
 
         // Init blocks
         stoneBlock = new StoneBlock(blockIdStone.getInt());
@@ -206,7 +216,7 @@ public class fuzzcraft {
                 FuzzCraft.TileEntity.colorizor_tileEntity.class,
                 "colorizor_tileEntity");
         GameRegistry.registerTileEntity(FuzzCraft.TileEntity.EnahncedSpawner_tileEntitiy.class, "enhancedspawner_tileentity");
-
+        LanguageRegistry.instance().addStringLocalization("itemGroup.FuzzCraftTab", "en_US", "FuzzCraft");
     }
 
     @PostInit
