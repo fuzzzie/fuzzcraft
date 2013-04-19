@@ -7,7 +7,7 @@ import net.minecraft.util.StatCollector;
 import org.lwjgl.opengl.GL11;
 
 import FuzzCraft.Containers.Colorizor_Container;
-import FuzzCraft.TileEntity.colorizor_tileEntity;
+import FuzzCraft.TileEntity.colorizorTileEntity;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -15,9 +15,9 @@ import cpw.mods.fml.relauncher.SideOnly;
 @SideOnly(Side.CLIENT)
 public class ColorizorGUI extends GuiContainer
 {
-    private colorizor_tileEntity furnaceInventory;
+    private colorizorTileEntity furnaceInventory;
 
-    public ColorizorGUI(InventoryPlayer par1InventoryPlayer, colorizor_tileEntity par2TileEntityFurnace)
+    public ColorizorGUI(InventoryPlayer par1InventoryPlayer, colorizorTileEntity par2TileEntityFurnace)
     {
         super(new Colorizor_Container(par1InventoryPlayer, par2TileEntityFurnace));
         this.furnaceInventory = par2TileEntityFurnace;

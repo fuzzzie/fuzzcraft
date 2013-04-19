@@ -5,7 +5,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 
-public class EnahncedSpawner_tileEntitiy extends TileEntity { 
+public class enhancedSpawnerTileEntity extends TileEntity { 
     
     public static int spawnRate;
     public static int mobIndex;

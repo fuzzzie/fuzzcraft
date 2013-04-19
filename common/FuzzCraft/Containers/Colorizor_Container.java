@@ -1,7 +1,7 @@
 package FuzzCraft.Containers;
 
 import FuzzCraft.Handlers.Colorizor_Recipes;
-import FuzzCraft.TileEntity.colorizor_tileEntity;
+import FuzzCraft.TileEntity.colorizorTileEntity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
@@ -13,12 +13,12 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class Colorizor_Container extends Container
 {
-    private colorizor_tileEntity furnace;
+    private colorizorTileEntity furnace;
     private int lastCookTime = 0;
     private int lastBurnTime = 0;
     private int lastItemBurnTime = 0;
 
-    public Colorizor_Container(InventoryPlayer par1InventoryPlayer, colorizor_tileEntity par2TileEntityFurnace)
+    public Colorizor_Container(InventoryPlayer par1InventoryPlayer, colorizorTileEntity par2TileEntityFurnace)
     {
         this.furnace = par2TileEntityFurnace;
         this.addSlotToContainer(new Slot(par2TileEntityFurnace, 0, 56, 17));
@@ -135,7 +135,7 @@ public class Colorizor_Container extends Container
                         return null;
                     }
                 }
-                else if (colorizor_tileEntity.isItemFuel(itemstack1))
+                else if (colorizorTileEntity.isItemFuel(itemstack1))
                 {
                     if (!this.mergeItemStack(itemstack1, 1, 2, false))
                     {

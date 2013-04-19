@@ -20,7 +20,7 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 @SuppressWarnings("deprecation")
-public class colorizor_tileEntity extends TileEntity implements ISidedInventory, net.minecraftforge.common.ISidedInventory
+public class colorizorTileEntity extends TileEntity implements ISidedInventory, net.minecraftforge.common.ISidedInventory
 {
     private static final int[] field_102010_d = new int[] {0};
     private static final int[] field_102011_e = new int[] {2, 1};

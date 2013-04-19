@@ -17,7 +17,7 @@ import net.minecraft.util.Icon;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 import FuzzCraft.Base.fuzzcraft;
-import FuzzCraft.TileEntity.colorizor_tileEntity;
+import FuzzCraft.TileEntity.colorizorTileEntity;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -210,7 +210,7 @@ public class Colorizor extends BlockContainer {
          */
         public TileEntity createNewTileEntity(World world)
         {
-            return new colorizor_tileEntity();
+            return new colorizorTileEntity();
         }
 
         /**
@@ -242,7 +242,7 @@ public class Colorizor extends BlockContainer {
 
             if (stack.hasDisplayName())
             {
-                ((colorizor_tileEntity)world.getBlockTileEntity(x, y, z)).func_94129_a(stack.getDisplayName());
+                ((colorizorTileEntity)world.getBlockTileEntity(x, y, z)).func_94129_a(stack.getDisplayName());
             }
         }
 
@@ -253,7 +253,7 @@ public class Colorizor extends BlockContainer {
         {
             if (!keepFurnaceInventory)
             {
-                colorizor_tileEntity tileentityfurnace = (colorizor_tileEntity)world.getBlockTileEntity(x, y, z);
+                colorizorTileEntity tileentityfurnace = (colorizorTileEntity)world.getBlockTileEntity(x, y, z);
 
                 if (tileentityfurnace != null)
                 {

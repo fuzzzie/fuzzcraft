@@ -18,7 +18,7 @@ public class GUI_Handler implements IGuiHandler {
             case 0:
                 return new FuzzCraft.Containers.Colorizor_Container(
                         player.inventory,
-                        (FuzzCraft.TileEntity.colorizor_tileEntity) tile_entity);
+                        (FuzzCraft.TileEntity.colorizorTileEntity) tile_entity);
             }
         return null;
     }
@@ -33,7 +33,7 @@ public class GUI_Handler implements IGuiHandler {
 
             case 0:
                 return new FuzzCraft.GUI.ColorizorGUI(player.inventory,
-                        (FuzzCraft.TileEntity.colorizor_tileEntity) tile_entity);
+                        (FuzzCraft.TileEntity.colorizorTileEntity) tile_entity);
                 
             case 1:
                 return new FuzzCraft.GUI.EnhancedSpawnerGUI(player);

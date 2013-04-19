@@ -63,7 +63,7 @@ public class EnhancedSpawner extends BlockContainer {
     {
         try
         {
-            return new FuzzCraft.TileEntity.EnahncedSpawner_tileEntitiy();
+            return new FuzzCraft.TileEntity.enhancedSpawnerTileEntity();
         }
         catch (Exception var3)
         {
@@ -98,7 +98,7 @@ public class EnhancedSpawner extends BlockContainer {
                 spawnRate = FuzzCraft.TileEntity.EnahncedSpawner_tileEntitiy.getSpawnRate();
                 mobIndex = FuzzCraft.TileEntity.EnahncedSpawner_tileEntitiy.getMobIndex(); */
                 
-                FuzzCraft.TileEntity.EnahncedSpawner_tileEntitiy t = (FuzzCraft.TileEntity.EnahncedSpawner_tileEntitiy) world.getBlockTileEntity(x, y, z);
+                FuzzCraft.TileEntity.enhancedSpawnerTileEntity t = (FuzzCraft.TileEntity.enhancedSpawnerTileEntity) world.getBlockTileEntity(x, y, z);
                 t.spawnerData(world);
                 
                 
@@ -201,7 +201,7 @@ public class EnhancedSpawner extends BlockContainer {
             spawnRate = FuzzCraft.TileEntity.EnahncedSpawner_tileEntitiy.getSpawnRate();
             mobIndex = FuzzCraft.TileEntity.EnahncedSpawner_tileEntitiy.getMobIndex(); */
             
-            FuzzCraft.TileEntity.EnahncedSpawner_tileEntitiy t = (FuzzCraft.TileEntity.EnahncedSpawner_tileEntitiy) world.getBlockTileEntity(x, y, z);
+            FuzzCraft.TileEntity.enhancedSpawnerTileEntity t = (FuzzCraft.TileEntity.enhancedSpawnerTileEntity) world.getBlockTileEntity(x, y, z);
             t.spawnerData(world);
             
             
@@ -293,7 +293,7 @@ public class EnhancedSpawner extends BlockContainer {
             return false;
         }
         
-        FuzzCraft.TileEntity.EnahncedSpawner_tileEntitiy t = (FuzzCraft.TileEntity.EnahncedSpawner_tileEntitiy) world.getBlockTileEntity(x, y, z);
+        FuzzCraft.TileEntity.enhancedSpawnerTileEntity t = (FuzzCraft.TileEntity.enhancedSpawnerTileEntity) world.getBlockTileEntity(x, y, z);
         t.spawnerData(world);
         
         player.openGui(fuzzcraft.instance, 1, world, x, y, z);
