@@ -1,5 +1,8 @@
 package FuzzCraft.Base;
 
+
+import net.minecraft.block.Block;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.MinecraftForge;
 import FuzzCraft.Blocks.BrickBlock;
@@ -76,6 +79,7 @@ public class CommonProxy {
     public void registerGUI() {
         NetworkRegistry.instance().registerGuiHandler(this, fuzzcraft.guiHandler);
         
+       
     }
     
     public void registerTileEntities() {
@@ -87,7 +91,25 @@ public class CommonProxy {
                 "enhancedspawner_tileentity");
     }
     
+    public void registerItems() {
+        LanguageRegistry.addName(fuzzcraft.colorCharge, "Color Charge");
+        
+    }
+    
     public void registerRecipies() {
+        
+        // Color Charge
+        
+        ItemStack blueStack = new ItemStack(Item.dyePowder, 1, 4);
+        ItemStack redStack = new ItemStack(Item.dyePowder, 1, 1);
+        ItemStack greenStack = new ItemStack(Item.dyePowder, 1, 2);
+        ItemStack yellowStack = new ItemStack(Item.dyePowder, 1, 11);
+        ItemStack whiteStack = new ItemStack(Item.dyePowder, 1, 15);
+        ItemStack blackStack = new ItemStack(Item.dyePowder, 1, 0);
+        ItemStack slimeStack = new ItemStack(Item.slimeBall);
+        GameRegistry.addRecipe(new ItemStack(fuzzcraft.colorCharge, 16), "wbk", "rsg", "kyw",
+                'w', whiteStack, 'b', blueStack, 'k', blackStack, 'r', redStack, 's', slimeStack, 
+                'g', greenStack, 'y', yellowStack);
         
         // Brick Recipes
 
@@ -107,6 +129,13 @@ public class CommonProxy {
         
         // Colored Stone
         
+        //white
+        ItemStack colorchargeStack = new ItemStack(fuzzcraft.colorCharge);
+        ItemStack vstoneStack = new ItemStack(Block.stone);
+        ItemStack wstoneStack = new ItemStack(fuzzcraft.stoneBlock, 1, 0);
+        GameRegistry.addRecipe(new ItemStack(fuzzcraft.stoneBlock, 1, 0), "cb", 'c', colorchargeStack, 'b', vstoneStack); 
+        
+        //orange
         
             
             

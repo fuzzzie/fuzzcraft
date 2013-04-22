@@ -10,6 +10,7 @@ import FuzzCraft.Blocks.EnhancedSpawner;
 import FuzzCraft.Blocks.RepulsionBlock;
 import FuzzCraft.Blocks.StoneBlock;
 import FuzzCraft.Handlers.GUI_Handler;
+import FuzzCraft.Items.ColorCharge;
 import cpw.mods.fml.common.FMLLog;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.Init;
@@ -27,7 +28,7 @@ import cpw.mods.fml.common.network.NetworkMod;
 public class fuzzcraft {
 
     private static Property blockIdStone, blockIdBrick, blockIdChisBrick,
-            blockIdRep, blockIdSpawnerI, blockIdSpawnerA;
+            blockIdRep, blockIdSpawnerI, blockIdSpawnerA, itemIdColorCharge;
 
     
 //    private staic Property blockIdColorizorI, blockIdColorizorA;
@@ -46,6 +47,8 @@ public class fuzzcraft {
     public static EnhancedSpawner enhancedspawnerBlockA;
 //  public static Colorizor colorizorBlockA;
 //  public static Colorizor colorizorBlockI;
+    
+    public static ColorCharge colorCharge;
 
     
     
@@ -75,6 +78,8 @@ public class fuzzcraft {
 
 //          blockIdColorizorA = fc_config.getBlock("ID.Colorizor_Active", 1504);
 //          blockIdColorizorI = fc_config.getBlock("Id.Colorizor_Inactive", 1501);
+            
+            itemIdColorCharge = fc_config.getItem("Id.Color_Charge", 8500);
             
             Property rP = fc_config.get(Configuration.CATEGORY_GENERAL, "repulsion_power", 15);
             rP.comment = "Set the power of Repulsion Blocks (Between 1 - 30, Default 15)";
@@ -118,6 +123,8 @@ public class fuzzcraft {
 //  colorizorBlockI = new Colorizor(blockIdColorizorI.getInt(), false);
 //  colorizorBlockA = new Colorizor(blockIdColorizorA.getInt(), true);
     
+    colorCharge = new ColorCharge(itemIdColorCharge.getInt());
+    
     }
     
     
@@ -125,6 +132,8 @@ public class fuzzcraft {
     public void load(FMLInitializationEvent event) {
 
         proxy.registerBlocks();
+        
+        proxy.registerItems();
         
         proxy.registerGUI();
       
