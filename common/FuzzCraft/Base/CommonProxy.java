@@ -107,7 +107,7 @@ public class CommonProxy {
         ItemStack whiteStack = new ItemStack(Item.dyePowder, 1, 15);
         ItemStack blackStack = new ItemStack(Item.dyePowder, 1, 0);
         ItemStack slimeStack = new ItemStack(Item.slimeBall);
-        GameRegistry.addRecipe(new ItemStack(fuzzcraft.colorCharge, 16), "wbk", "rsg", "kyw",
+        GameRegistry.addRecipe(new ItemStack(fuzzcraft.colorCharge, 64), "wbk", "rsg", "kyw",
                 'w', whiteStack, 'b', blueStack, 'k', blackStack, 'r', redStack, 's', slimeStack, 
                 'g', greenStack, 'y', yellowStack);
         

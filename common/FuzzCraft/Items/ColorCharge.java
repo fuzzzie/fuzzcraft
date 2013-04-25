@@ -14,7 +14,7 @@ public class ColorCharge extends Item {
     public ColorCharge(int par1) {
         super(par1);
         this.setUnlocalizedName("charge_13");
-        this.setMaxStackSize(16);
+        this.setMaxStackSize(64);
         this.setCreativeTab(CreativeTabs.tabMaterials);
   
         
