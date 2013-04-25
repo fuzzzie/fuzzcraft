@@ -23,8 +23,8 @@ import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkMod;
 
-@Mod(modid = "fuzzcraft", name = "fuzzcraft", version = "0.1.1b")
-@NetworkMod(clientSideRequired = true, serverSideRequired = false, channels={"FuzzCraft"}, packetHandler = FuzzCraft.Handlers.PacketHandler.class)
+@Mod(modid = "fuzzcraft", name = "fuzzcraft", version = "0.1.1c")
+@NetworkMod(clientSideRequired = true, serverSideRequired = false)
 public class fuzzcraft {
 
     private static Property blockIdStone, blockIdBrick, blockIdChisBrick,
@@ -67,11 +67,10 @@ public class fuzzcraft {
         try {
             fc_config.load();
 
-            blockIdStone = fc_config.getBlock("ID.Stone", 1500);
-            blockIdBrick = fc_config.getBlock("ID.Brick", 1502);
-            blockIdChisBrick = fc_config.getBlock("ID.Chiseled_Brick", 1503);
-            
-            blockIdRep = fc_config.getBlock("ID.Repulsor_Block", 1505);
+            blockIdStone = fc_config.getBlock("ID.Stone", 1600);
+            blockIdBrick = fc_config.getBlock("ID.Brick", 1601);
+            blockIdChisBrick = fc_config.getBlock("ID.Chiseled_Brick", 1602);
+            blockIdRep = fc_config.getBlock("ID.Repulsor_Block", 1603);
 
 //            blockIdSpawnerI = fc_config.getBlock("ID.Spawner", 1506);
 //            blockIdSpawnerA = fc_config.getBlock("ID.ActiveSpawner", 1507);

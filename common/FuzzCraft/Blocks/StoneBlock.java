@@ -23,7 +23,7 @@ public class StoneBlock extends Block {
 
     public StoneBlock(int par1) {
         super(par1, Material.rock);
-        this.setCreativeTab(CreativeTabs.tabBlock);
+        this.setCreativeTab(CreativeTabs.tabDecorations);
         this.setResistance(30.0F);
         this.setHardness(1.5F);
         this.setUnlocalizedName("stoneblock");

@@ -115,7 +115,7 @@ public class CommonProxy {
 
         for (int i = 0; i < 15; i++) {
             ItemStack stoneStack = new ItemStack(fuzzcraft.stoneBlock, 1, i);
-            GameRegistry.addRecipe(new ItemStack(fuzzcraft.brickBlock, 1, i), "xx", "xx",
+            GameRegistry.addRecipe(new ItemStack(fuzzcraft.brickBlock, 4, i), "xx", "xx",
                     'x', stoneStack);
         }
 
@@ -123,7 +123,7 @@ public class CommonProxy {
 
         for (int i = 0; i < 15; i++) {
             ItemStack brickStack = new ItemStack(fuzzcraft.brickBlock, 1, i);
-            GameRegistry.addRecipe(new ItemStack(fuzzcraft.chisbrickBlock, 1, i), "xx",
+            GameRegistry.addRecipe(new ItemStack(fuzzcraft.chisbrickBlock, 4, i), "xx",
                     "xx", 'x', brickStack); 
         }
         
@@ -164,6 +164,13 @@ public class CommonProxy {
         GameRegistry.addRecipe(new ItemStack(fuzzcraft.stoneBlock, 1, 13), "s", 's', grstoneStack);
         GameRegistry.addRecipe(new ItemStack(fuzzcraft.stoneBlock, 1, 14), "s", 's', rdstoneStack);
         GameRegistry.addRecipe(new ItemStack(fuzzcraft.stoneBlock, 1, 0), "s", 's', blastoneStack);
+        
+        // Repulsion Block
+        
+        ItemStack pistonStack = new ItemStack(Block.pistonBase);
+        ItemStack ironStack = new ItemStack(Item.ingotIron);
+        GameRegistry.addRecipe(new ItemStack(fuzzcraft.repulsionBlock,1), "iii", "ipi", "iii", 
+                'i', ironStack, 'p', pistonStack);
         
     }
   
