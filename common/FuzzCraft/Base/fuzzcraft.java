@@ -23,7 +23,7 @@ import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkMod;
 
-@Mod(modid = "fuzzcraft", name = "fuzzcraft", version = "0.1.1c")
+@Mod(modid = "fuzzcraft", name = "fuzzcraft", version = "0.1.2a")
 @NetworkMod(clientSideRequired = true, serverSideRequired = false)
 public class fuzzcraft {
 
@@ -67,18 +67,18 @@ public class fuzzcraft {
         try {
             fc_config.load();
 
-            blockIdStone = fc_config.getBlock("ID.Stone", 1600);
-            blockIdBrick = fc_config.getBlock("ID.Brick", 1601);
-            blockIdChisBrick = fc_config.getBlock("ID.Chiseled_Brick", 1602);
-            blockIdRep = fc_config.getBlock("ID.Repulsor_Block", 1603);
+            blockIdStone = fc_config.getBlock("ID.Stone", 1555);
+            blockIdBrick = fc_config.getBlock("ID.Brick", 1556);
+            blockIdChisBrick = fc_config.getBlock("ID.Chiseled_Brick", 1557);
+            blockIdRep = fc_config.getBlock("ID.Repulsor_Block", 1558);
 
-//            blockIdSpawnerI = fc_config.getBlock("ID.Spawner", 1506);
-//            blockIdSpawnerA = fc_config.getBlock("ID.ActiveSpawner", 1507);
+//          blockIdSpawnerI = fc_config.getBlock("ID.Spawner", 1506);
+//          blockIdSpawnerA = fc_config.getBlock("ID.ActiveSpawner", 1507);
 
 //          blockIdColorizorA = fc_config.getBlock("ID.Colorizor_Active", 1504);
 //          blockIdColorizorI = fc_config.getBlock("Id.Colorizor_Inactive", 1501);
             
-            itemIdColorCharge = fc_config.getItem("Id.Color_Charge", 8500);
+            itemIdColorCharge = fc_config.getItem("Id.Color_Charge", 8080);
             
             Property rP = fc_config.get(Configuration.CATEGORY_GENERAL, "repulsion_power", 15);
             rP.comment = "Set the power of Repulsion Blocks (Between 1 - 30, Default 15)";
@@ -117,8 +117,8 @@ public class fuzzcraft {
     brickBlock = new BrickBlock(blockIdBrick.getInt());
     chisbrickBlock = new ChisBrickBlock(blockIdChisBrick.getInt());
     repulsionBlock = new RepulsionBlock(blockIdRep.getInt(), repulsorPower);
-//    enhancedspawnerBlockI = new EnhancedSpawner(blockIdSpawnerI.getInt(), false, spawnerEmit);
-//    enhancedspawnerBlockA = new EnhancedSpawner(blockIdSpawnerA.getInt(), true, spawnerEmit);
+//  enhancedspawnerBlockI = new EnhancedSpawner(blockIdSpawnerI.getInt(), false, spawnerEmit);
+//  enhancedspawnerBlockA = new EnhancedSpawner(blockIdSpawnerA.getInt(), true, spawnerEmit);
 //  colorizorBlockI = new Colorizor(blockIdColorizorI.getInt(), false);
 //  colorizorBlockA = new Colorizor(blockIdColorizorA.getInt(), true);
     
@@ -134,9 +134,9 @@ public class fuzzcraft {
         
         proxy.registerItems();
         
-//        proxy.registerGUI();
+//      proxy.registerGUI();
       
-//        proxy.registerTileEntities();
+//      proxy.registerTileEntities();
         
         proxy.registerRecipies();
          
