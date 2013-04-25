@@ -1,4 +1,4 @@
-package FuzzCraft.TileEntity;
+/* package FuzzCraft.TileEntity;
 
 import FuzzCraft.Base.fuzzcraft;
 import net.minecraft.nbt.NBTTagCompound;
@@ -58,3 +58,4 @@ public class enhancedSpawnerTileEntity extends TileEntity {
     }
     
 }
+*/

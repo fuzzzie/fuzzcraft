@@ -34,13 +34,13 @@ public class CommonProxy {
         GameRegistry.registerBlock(fuzzcraft.repulsionBlock, "repulsionBlock");
         MinecraftForge.setBlockHarvestLevel(fuzzcraft.repulsionBlock, "Pick", 0);
 
-        LanguageRegistry.addName(fuzzcraft.enhancedspawnerBlockI, "Enhanced Zombie Spawner");
-        GameRegistry.registerBlock(fuzzcraft.enhancedspawnerBlockI, "zombieespawnerBlockI");
-        MinecraftForge.setBlockHarvestLevel(fuzzcraft.enhancedspawnerBlockI, "Pick", 3);
+//      LanguageRegistry.addName(fuzzcraft.enhancedspawnerBlockI, "Enhanced Zombie Spawner");
+//      GameRegistry.registerBlock(fuzzcraft.enhancedspawnerBlockI, "zombieespawnerBlockI");
+//      MinecraftForge.setBlockHarvestLevel(fuzzcraft.enhancedspawnerBlockI, "Pick", 3);
 
-        LanguageRegistry.addName(fuzzcraft.enhancedspawnerBlockA, "Enhanced Zombie Spawner");
-        GameRegistry.registerBlock(fuzzcraft.enhancedspawnerBlockA, "zombieespawnerBlockA");
-        MinecraftForge.setBlockHarvestLevel(fuzzcraft.enhancedspawnerBlockA, "Pick", 3);
+//      LanguageRegistry.addName(fuzzcraft.enhancedspawnerBlockA, "Enhanced Zombie Spawner");
+//      GameRegistry.registerBlock(fuzzcraft.enhancedspawnerBlockA, "zombieespawnerBlockA");
+//      MinecraftForge.setBlockHarvestLevel(fuzzcraft.enhancedspawnerBlockA, "Pick", 3);
      
         // Colored Stone
 
@@ -82,14 +82,14 @@ public class CommonProxy {
        
     }
     
-    public void registerTileEntities() {
+/*    public void registerTileEntities() {
         GameRegistry.registerTileEntity(
                 FuzzCraft.TileEntity.colorizorTileEntity.class,
                 "colorizor_tileEntity");
         
         GameRegistry.registerTileEntity(FuzzCraft.TileEntity.enhancedSpawnerTileEntity.class, 
                 "enhancedspawner_tileentity");
-    }
+    } */
     
     public void registerItems() {
         LanguageRegistry.addName(fuzzcraft.colorCharge, "Color Charge");
@@ -129,19 +129,41 @@ public class CommonProxy {
         
         // Colored Stone
         
-        //white
         ItemStack colorchargeStack = new ItemStack(fuzzcraft.colorCharge);
         ItemStack vstoneStack = new ItemStack(Block.stone);
         ItemStack wstoneStack = new ItemStack(fuzzcraft.stoneBlock, 1, 0);
+        ItemStack ostoneStack = new ItemStack(fuzzcraft.stoneBlock, 1, 1);
+        ItemStack mstoneStack = new ItemStack(fuzzcraft.stoneBlock, 1, 2);
+        ItemStack lbstoneStack = new ItemStack(fuzzcraft.stoneBlock, 1, 3);
+        ItemStack ystoneStack = new ItemStack(fuzzcraft.stoneBlock, 1, 4);
+        ItemStack listoneStack = new ItemStack(fuzzcraft.stoneBlock, 1, 5);
+        ItemStack pistoneStack = new ItemStack(fuzzcraft.stoneBlock, 1, 6);
+        ItemStack dgstoneStack = new ItemStack(fuzzcraft.stoneBlock, 1, 7);
+        ItemStack cstoneStack = new ItemStack(fuzzcraft.stoneBlock, 1, 8);
+        ItemStack pstoneStack = new ItemStack(fuzzcraft.stoneBlock, 1, 9);
+        ItemStack blstoneStack = new ItemStack(fuzzcraft.stoneBlock, 1, 10);
+        ItemStack brstoneStack = new ItemStack(fuzzcraft.stoneBlock, 1, 11);
+        ItemStack grstoneStack = new ItemStack(fuzzcraft.stoneBlock, 1, 12);
+        ItemStack rdstoneStack = new ItemStack(fuzzcraft.stoneBlock, 1, 13);
+        ItemStack blastoneStack = new ItemStack(fuzzcraft.stoneBlock, 1, 14);
+        
         GameRegistry.addRecipe(new ItemStack(fuzzcraft.stoneBlock, 1, 0), "cb", 'c', colorchargeStack, 'b', vstoneStack); 
-        
-        //orange
-        
             
-            
-            
-         
-        
+        GameRegistry.addRecipe(new ItemStack(fuzzcraft.stoneBlock, 1, 1), "s", 's', wstoneStack);
+        GameRegistry.addRecipe(new ItemStack(fuzzcraft.stoneBlock, 1, 2), "s", 's', ostoneStack);
+        GameRegistry.addRecipe(new ItemStack(fuzzcraft.stoneBlock, 1, 3), "s", 's', mstoneStack);
+        GameRegistry.addRecipe(new ItemStack(fuzzcraft.stoneBlock, 1, 4), "s", 's', lbstoneStack);
+        GameRegistry.addRecipe(new ItemStack(fuzzcraft.stoneBlock, 1, 5), "s", 's', ystoneStack);
+        GameRegistry.addRecipe(new ItemStack(fuzzcraft.stoneBlock, 1, 6), "s", 's', listoneStack);
+        GameRegistry.addRecipe(new ItemStack(fuzzcraft.stoneBlock, 1, 7), "s", 's', pistoneStack);
+        GameRegistry.addRecipe(new ItemStack(fuzzcraft.stoneBlock, 1, 8), "s", 's', dgstoneStack);
+        GameRegistry.addRecipe(new ItemStack(fuzzcraft.stoneBlock, 1, 9), "s", 's', cstoneStack);
+        GameRegistry.addRecipe(new ItemStack(fuzzcraft.stoneBlock, 1, 10), "s", 's', pstoneStack);
+        GameRegistry.addRecipe(new ItemStack(fuzzcraft.stoneBlock, 1, 11), "s", 's', blstoneStack);
+        GameRegistry.addRecipe(new ItemStack(fuzzcraft.stoneBlock, 1, 12), "s", 's', brstoneStack);
+        GameRegistry.addRecipe(new ItemStack(fuzzcraft.stoneBlock, 1, 13), "s", 's', grstoneStack);
+        GameRegistry.addRecipe(new ItemStack(fuzzcraft.stoneBlock, 1, 14), "s", 's', rdstoneStack);
+        GameRegistry.addRecipe(new ItemStack(fuzzcraft.stoneBlock, 1, 0), "s", 's', blastoneStack);
         
     }
   

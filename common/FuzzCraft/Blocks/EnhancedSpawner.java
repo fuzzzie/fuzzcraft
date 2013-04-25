@@ -1,4 +1,4 @@
-package FuzzCraft.Blocks;
+/* package FuzzCraft.Blocks;
 
 import java.util.Random;
 
@@ -84,7 +84,7 @@ public class EnhancedSpawner extends BlockContainer {
                 
                 world.setBlock(x, y, z, fuzzcraft.enhancedspawnerBlockA.blockID, 0, 2);
                 
-/*              mobIndex = FuzzCraft.GUI.EnhancedSpawnerGUI.mobIndex;
+              mobIndex = FuzzCraft.GUI.EnhancedSpawnerGUI.mobIndex;
                 int spawn = FuzzCraft.GUI.EnhancedSpawnerGUI.spawnRate;
 
                 if (spawn == 0) {
@@ -96,7 +96,7 @@ public class EnhancedSpawner extends BlockContainer {
                 } 
                 
                 spawnRate = FuzzCraft.TileEntity.EnahncedSpawner_tileEntitiy.getSpawnRate();
-                mobIndex = FuzzCraft.TileEntity.EnahncedSpawner_tileEntitiy.getMobIndex(); */
+                mobIndex = FuzzCraft.TileEntity.EnahncedSpawner_tileEntitiy.getMobIndex(); 
                 
                 FuzzCraft.TileEntity.enhancedSpawnerTileEntity t = (FuzzCraft.TileEntity.enhancedSpawnerTileEntity) world.getBlockTileEntity(x, y, z);
                 t.spawnerData(world);
@@ -187,7 +187,7 @@ public class EnhancedSpawner extends BlockContainer {
             
             world.scheduleBlockUpdate(x, y, z, fuzzcraft.enhancedspawnerBlockA.blockID, spawnRate);
     
-/*            mobIndex = FuzzCraft.GUI.EnhancedSpawnerGUI.mobIndex;
+            mobIndex = FuzzCraft.GUI.EnhancedSpawnerGUI.mobIndex;
             int spawn = FuzzCraft.GUI.EnhancedSpawnerGUI.spawnRate;
 
             if (spawn == 0) {
@@ -199,7 +199,7 @@ public class EnhancedSpawner extends BlockContainer {
             } 
             
             spawnRate = FuzzCraft.TileEntity.EnahncedSpawner_tileEntitiy.getSpawnRate();
-            mobIndex = FuzzCraft.TileEntity.EnahncedSpawner_tileEntitiy.getMobIndex(); */
+            mobIndex = FuzzCraft.TileEntity.EnahncedSpawner_tileEntitiy.getMobIndex();
             
             FuzzCraft.TileEntity.enhancedSpawnerTileEntity t = (FuzzCraft.TileEntity.enhancedSpawnerTileEntity) world.getBlockTileEntity(x, y, z);
             t.spawnerData(world);
@@ -308,3 +308,4 @@ public class EnhancedSpawner extends BlockContainer {
         return true;
     }
 }
+ */
