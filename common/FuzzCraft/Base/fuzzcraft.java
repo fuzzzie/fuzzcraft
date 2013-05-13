@@ -5,7 +5,9 @@ import java.util.logging.Level;
 import net.minecraftforge.common.Configuration;
 import net.minecraftforge.common.Property;
 import FuzzCraft.Blocks.BrickBlock;
+import FuzzCraft.Blocks.BrickStairsBlock;
 import FuzzCraft.Blocks.ChisBrickBlock;
+import FuzzCraft.Blocks.SpikeBlock;
 
 import FuzzCraft.Blocks.RepulsionBlock;
 import FuzzCraft.Blocks.StoneBlock;
@@ -28,7 +30,8 @@ import cpw.mods.fml.common.network.NetworkMod;
 public class fuzzcraft {
 
     private static Property blockIdStone, blockIdBrick, blockIdChisBrick,
-            blockIdRep, blockIdSpawnerI, blockIdSpawnerA, itemIdColorCharge;
+            blockIdRep, blockIdSpawnerI, blockIdSpawnerA, itemIdColorCharge,
+            blockIdBrickStairs, blockIdSpike;
 
     
 //    private staic Property blockIdColorizorI, blockIdColorizorA;
@@ -42,7 +45,9 @@ public class fuzzcraft {
     public static StoneBlock stoneBlock;
     public static BrickBlock brickBlock;
     public static ChisBrickBlock chisbrickBlock;
+    public static BrickStairsBlock brickStairsBlock;
     public static RepulsionBlock repulsionBlock;
+    public static SpikeBlock spikeBlock;
 //  public static EnhancedSpawner enhancedspawnerBlockI;
 //  public static EnhancedSpawner enhancedspawnerBlockA;
 //  public static Colorizor colorizorBlockA;
@@ -71,6 +76,8 @@ public class fuzzcraft {
             blockIdBrick = fc_config.getBlock("ID.Brick", 1556);
             blockIdChisBrick = fc_config.getBlock("ID.Chiseled_Brick", 1557);
             blockIdRep = fc_config.getBlock("ID.Repulsor_Block", 1558);
+            blockIdBrickStairs = fc_config.getBlock("ID.Brick_Stairs", 1559);
+            blockIdSpike = fc_config.getBlock("Id.Spike", 1560);
 
 //          blockIdSpawnerI = fc_config.getBlock("ID.Spawner", 1506);
 //          blockIdSpawnerA = fc_config.getBlock("ID.ActiveSpawner", 1507);
@@ -117,12 +124,14 @@ public class fuzzcraft {
     brickBlock = new BrickBlock(blockIdBrick.getInt());
     chisbrickBlock = new ChisBrickBlock(blockIdChisBrick.getInt());
     repulsionBlock = new RepulsionBlock(blockIdRep.getInt(), repulsorPower);
+    spikeBlock = new SpikeBlock(blockIdSpike.getInt());
 //  enhancedspawnerBlockI = new EnhancedSpawner(blockIdSpawnerI.getInt(), false, spawnerEmit);
 //  enhancedspawnerBlockA = new EnhancedSpawner(blockIdSpawnerA.getInt(), true, spawnerEmit);
 //  colorizorBlockI = new Colorizor(blockIdColorizorI.getInt(), false);
 //  colorizorBlockA = new Colorizor(blockIdColorizorA.getInt(), true);
     
     colorCharge = new ColorCharge(itemIdColorCharge.getInt());
+    
     
     }
     

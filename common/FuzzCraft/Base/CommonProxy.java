@@ -7,10 +7,12 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.MinecraftForge;
 import FuzzCraft.Blocks.BrickBlock;
 import FuzzCraft.Blocks.BrickBlockItem;
+import FuzzCraft.Blocks.BrickStairsBlock;
 import FuzzCraft.Blocks.ChisBrickBlock;
 import FuzzCraft.Blocks.ChisBrickBlockItem;
 import FuzzCraft.Blocks.StoneBlock;
 import FuzzCraft.Blocks.StoneBlockItem;
+import FuzzCraft.Blocks.SpikeBlock;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
@@ -33,6 +35,10 @@ public class CommonProxy {
         LanguageRegistry.addName(fuzzcraft.repulsionBlock, "Repulsion Block");
         GameRegistry.registerBlock(fuzzcraft.repulsionBlock, "repulsionBlock");
         MinecraftForge.setBlockHarvestLevel(fuzzcraft.repulsionBlock, "Pick", 0);
+        
+        LanguageRegistry.addName(fuzzcraft.spikeBlock, "Spike");
+        GameRegistry.registerBlock(fuzzcraft.spikeBlock, "spikeBlock");
+        MinecraftForge.setBlockHarvestLevel(fuzzcraft.spikeBlock, "Pick", 0);
 
 //      LanguageRegistry.addName(fuzzcraft.enhancedspawnerBlockI, "Enhanced Zombie Spawner");
 //      GameRegistry.registerBlock(fuzzcraft.enhancedspawnerBlockI, "zombieespawnerBlockI");
@@ -70,6 +76,13 @@ public class CommonProxy {
         for (int i = 0; i < 15; i++) {
             LanguageRegistry.addName(new ItemStack(fuzzcraft.chisbrickBlock, 1, i),
                     ChisBrickBlock.chisbrickBlockNames[i]);
+        }
+        
+        MinecraftForge.setBlockHarvestLevel(fuzzcraft.brickStairsBlock, "Pick", 1);
+        GameRegistry.registerBlock(fuzzcraft.brickStairsBlock, "brickStairsBlock");
+        for (int i = 0; i < 15; i++) {
+            LanguageRegistry.addName(new ItemStack(fuzzcraft.brickStairsBlock, 1, i),
+                    BrickStairsBlock.brickStairNames[i]);
         }
 
        
